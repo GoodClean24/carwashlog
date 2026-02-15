@@ -703,17 +703,6 @@
                 </div>
             </div>
 
-            <!-- Step Tracking Section -->
-            <div id="stepTrackingSection" style="display: none; margin: 20px 0; padding: 16px; background: #F8F9FD; border-radius: 12px; border: 2px solid #68C6E6;">
-                <div style="font-weight: 700; color: #142B55; margin-bottom: 12px; font-size: 16px;">Track Steps Performed:</div>
-                <div id="stepCheckboxes"></div>
-                <div style="margin-top: 12px;">
-                    <input type="text" id="customStepInput" placeholder="+ Add custom step (e.g., headlight restoration)" style="width: 100%; padding: 8px; border: 2px solid #ADCEE7; border-radius: 6px; font-size: 14px;">
-                    <button onclick="addCustomStep()" style="width: 100%; margin-top: 8px; padding: 8px; background: white; border: 2px solid #68C6E6; border-radius: 6px; color: #105495; font-weight: 600; cursor: pointer;">+ Add Custom Step</button>
-                    <div id="customStepsList" style="margin-top: 8px;"></div>
-                </div>
-            </div>
-
             <div class="input-row">
                 <div class="input-group">
                     <label>Date</label>
@@ -781,97 +770,6 @@
             </div>
 
             <button class="back-btn" onclick="showScreen('mainMenu')">← Back to Menu</button>
-        </div>
-
-
-        <!-- Stats Detail View -->
-        <div id="statsDetail" class="card screen">
-            <button class="back-btn" onclick="showScreen('mainMenu'); calculateMainMenuStats();" style="margin-bottom: 16px;">← Back to Menu</button>
-            
-            <h2 id="statsDetailTitle" style="color: #142B55; margin-bottom: 16px;"></h2>
-            
-            <div id="statsDetailSummary" style="background: linear-gradient(135deg, #105495 0%, #54A4D5 100%); padding: 20px; border-radius: 12px; margin-bottom: 20px;"></div>
-            
-            <div style="background: #F8F9FD; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
-                <h3 style="color: #2A466F; margin-bottom: 12px;">Services</h3>
-                <div id="statsDetailServices"></div>
-            </div>
-        </div>
-
-
-        <!-- GitHub Pages Setup -->
-        <div id="githubSetup" class="card screen">
-            <button class="back-btn" onclick="showScreen('mainMenu');" style="margin-bottom: 16px;">← Back to Menu</button>
-            
-            <h2 style="color: #142B55; margin-bottom: 8px;">GitHub Pages Setup</h2>
-            <p style="color: #64748b; margin-bottom: 20px; font-size: 14px;">Host your app online for free (takes 5 minutes)</p>
-            
-            <div style="background: #F8F9FD; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: #2A466F; margin-bottom: 16px; font-size: 16px;">Step 1: Create GitHub Account</h3>
-                <ol style="margin-left: 20px; color: #142B55; line-height: 1.8;">
-                    <li>Go to <strong>github.com</strong></li>
-                    <li>Click "Sign up" (free account)</li>
-                    <li>Complete registration</li>
-                </ol>
-            </div>
-            
-            <div style="background: #F8F9FD; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: #2A466F; margin-bottom: 16px; font-size: 16px;">Step 2: Create Repository</h3>
-                <ol style="margin-left: 20px; color: #142B55; line-height: 1.8;">
-                    <li>Click <strong>"+"</strong> → <strong>"New repository"</strong></li>
-                    <li>Name: <strong>car-wash-app</strong></li>
-                    <li>Make it <strong>Public</strong></li>
-                    <li>Click <strong>"Create repository"</strong></li>
-                </ol>
-            </div>
-            
-            <div style="background: #F8F9FD; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: #2A466F; margin-bottom: 16px; font-size: 16px;">Step 3: Upload Your App</h3>
-                <ol style="margin-left: 20px; color: #142B55; line-height: 1.8;">
-                    <li>Click <strong>"uploading an existing file"</strong></li>
-                    <li>Export this app (see button below)</li>
-                    <li>Drag the file to GitHub</li>
-                    <li><strong>IMPORTANT:</strong> Rename file to <strong>index.html</strong></li>
-                    <li>Click <strong>"Commit changes"</strong></li>
-                </ol>
-            </div>
-            
-            <div style="background: #F8F9FD; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: #2A466F; margin-bottom: 16px; font-size: 16px;">Step 4: Enable GitHub Pages</h3>
-                <ol style="margin-left: 20px; color: #142B55; line-height: 1.8;">
-                    <li>Click <strong>"Settings"</strong> tab</li>
-                    <li>Click <strong>"Pages"</strong> in left sidebar</li>
-                    <li>Source: <strong>Deploy from a branch</strong></li>
-                    <li>Branch: <strong>main</strong></li>
-                    <li>Click <strong>"Save"</strong></li>
-                </ol>
-            </div>
-            
-            <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: white; margin-bottom: 12px; font-size: 16px;">✅ Step 5: Get Your URL</h3>
-                <div style="color: rgba(255,255,255,0.9); line-height: 1.8;">
-                    <p style="margin-bottom: 12px;">Wait 2-3 minutes, then your app will be live at:</p>
-                    <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; font-family: monospace; word-break: break-all;">
-                        https://yourusername.github.io/car-wash-app
-                    </div>
-                    <p style="margin-top: 12px; font-size: 14px;">Add this URL to your phone's home screen!</p>
-                </div>
-            </div>
-            
-            <div style="background: #FEF3C7; padding: 16px; border-radius: 12px; border: 2px solid #F59E0B;">
-                <h3 style="color: #92400E; margin-bottom: 8px; font-size: 14px;">💡 Updating Your App:</h3>
-                <ol style="margin-left: 20px; color: #92400E; line-height: 1.8; font-size: 13px;">
-                    <li>Export new version (button below)</li>
-                    <li>Go to your GitHub repository</li>
-                    <li>Click <strong>index.html</strong></li>
-                    <li>Click <strong>pencil icon</strong> to edit</li>
-                    <li>Delete all content, paste new HTML</li>
-                    <li>Click <strong>"Commit changes"</strong></li>
-                    <li>Wait 1-2 minutes for update</li>
-                </ol>
-            </div>
-            
-            <button class="btn" onclick="exportToHTML()" style="margin-top: 20px;">💾 Export App (Save HTML File)</button>
         </div>
 
         <!-- Client Profile -->
@@ -1690,13 +1588,6 @@
             document.getElementById('serviceNotes').value = '';
             setDefaultDate();
             
-            // Reset step tracking
-            customSteps = [];
-            document.getElementById('stepTrackingSection').style.display = 'none';
-            document.getElementById('stepCheckboxes').innerHTML = '';
-            document.getElementById('customStepsList').innerHTML = '';
-            document.getElementById('customStepInput').value = '';
-            
             showScreen('logServiceForm');
         }
 
@@ -1754,8 +1645,6 @@
             calculateMainMenuStats();
         }
 
-        let customSteps = [];
-
         function toggleService(type) {
             const checkbox = document.getElementById(`service-${type}`);
             checkbox.checked = !checkbox.checked;
@@ -1765,91 +1654,7 @@
             } else {
                 checkbox.parentElement.classList.remove('selected');
             }
-            
-            // Update step tracking section
-            updateStepTracking();
         }
-
-        function updateStepTracking() {
-            const services = [];
-            if (document.getElementById('service-basic').checked) services.push('Basic Wash');
-            if (document.getElementById('service-shine').checked) services.push('Wash and Shine');
-            if (document.getElementById('service-wax').checked) services.push('Wax');
-            if (document.getElementById('service-detail').checked) services.push('Full Detail');
-            if (document.getElementById('service-rinseless').checked) services.push('Rinseless Wash');
-
-            const stepSection = document.getElementById('stepTrackingSection');
-            const stepCheckboxes = document.getElementById('stepCheckboxes');
-
-            if (services.length === 0) {
-                stepSection.style.display = 'none';
-                return;
-            }
-
-            stepSection.style.display = 'block';
-            
-            const displayNames = {
-                'Basic Wash': 'Basic Wash',
-                'Wash and Shine': 'Basic Wash + S0.03 Ceramic',
-                'Wax': 'Basic Wash + Decon + Clay + Wax',
-                'Full Detail': 'Basic Wash + Decon + Iron Remover + Clay + Paint Correction + Polish + Wax',
-                'Rinseless Wash': 'Rinseless Wash'
-            };
-
-            let html = '';
-            services.forEach(serviceName => {
-                const steps = serviceStepsDefinitions[serviceName];
-                if (!steps) return;
-
-                html += `<div style="font-weight: 600; color: #2A466F; margin: 12px 0 8px; font-size: 14px;">${displayNames[serviceName] || serviceName}:</div>`;
-                
-                steps.forEach(step => {
-                    html += `
-                        <label style="display: flex; align-items: center; padding: 8px; margin-bottom: 4px; background: white; border-radius: 6px; cursor: pointer;">
-                            <input type="checkbox" class="step-checkbox" data-step-id="${step.id}" checked style="margin-right: 8px; cursor: pointer;">
-                            <span style="color: #142B55;">${step.label}</span>
-                        </label>
-                    `;
-                });
-            });
-
-            stepCheckboxes.innerHTML = html;
-        }
-
-        function addCustomStep() {
-            const input = document.getElementById('customStepInput');
-            const stepName = input.value.trim();
-            
-            if (!stepName) {
-                alert('Please enter a step name');
-                return;
-            }
-
-            customSteps.push(stepName);
-            input.value = '';
-            renderCustomSteps();
-        }
-
-        function removeCustomStep(index) {
-            customSteps.splice(index, 1);
-            renderCustomSteps();
-        }
-
-        function renderCustomSteps() {
-            const container = document.getElementById('customStepsList');
-            if (customSteps.length === 0) {
-                container.innerHTML = '';
-                return;
-            }
-
-            container.innerHTML = customSteps.map((step, index) => `
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; background: white; border-radius: 6px; margin-bottom: 4px;">
-                    <span style="color: #142B55;">✓ ${step}</span>
-                    <button onclick="removeCustomStep(${index})" style="padding: 4px 8px; background: #fee2e2; border: none; border-radius: 4px; color: #DC2626; font-size: 12px; cursor: pointer;">Remove</button>
-                </div>
-            `).join('');
-        }
-
 
         function saveService() {
             const services = [];
@@ -1874,18 +1679,12 @@
                 return;
             }
 
-            // Capture performed steps
-            const performedSteps = [];
-            document.querySelectorAll('.step-checkbox:checked').forEach(checkbox => {
-                performedSteps.push(checkbox.dataset.stepId);
-            });
-
             const client = clients.find(c => c.id === currentClientId);
             const vehicle = client.vehicles.find(v => v.id === currentVehicleId);
 
-            // Calculate product cost based on performed steps
+            // Calculate product cost
             const vehicleSize = determineVehicleSize(vehicle);
-            const { totalCost: productCost, breakdown } = calculateServiceCost(services, vehicleSize, performedSteps);
+            const { totalCost: productCost, breakdown } = calculateServiceCost(services, vehicleSize);
 
             vehicle.services.unshift({
                 services: services,
@@ -1895,15 +1694,10 @@
                 productCost: productCost,
                 costBreakdown: breakdown,
                 profit: parseFloat(cost) - productCost,
-                notes: notes,
-                performedSteps: performedSteps,
-                customSteps: customSteps.length > 0 ? [...customSteps] : undefined
+                notes: notes
             });
 
             saveData();
-            
-            // Reset custom steps
-            customSteps = [];
             
             // Show profit alert if products are configured
             if (productCost > 0) {
@@ -2459,66 +2253,7 @@
             showClientTab('list');
         }
 
-        function renderServiceSteps(service) {
-            if (!service.performedSteps) {
-                return '<div style="color: #64748b; font-style: italic;">Steps not tracked</div>';
-            }
-
-            let html = '';
-            service.services.forEach(serviceName => {
-                const steps = serviceStepsDefinitions[serviceName];
-                if (!steps) return;
-
-                const displayNames = {
-                    'Basic Wash': 'Basic Wash',
-                    'Wash and Shine': 'Basic Wash + S0.03 Ceramic',
-                    'Wax': 'Basic Wash + Decon + Clay + Wax',
-                    'Full Detail': 'Basic Wash + Decon + Iron Remover + Clay + Paint Correction + Polish + Wax',
-                    'Rinseless Wash': 'Rinseless Wash'
-                };
-
-                html += `<div style="font-weight: 700; color: #142B55; margin-bottom: 8px; margin-top: ${html ? '12px' : '0'};">${displayNames[serviceName] || serviceName} Steps:</div>`;
-                
-                steps.forEach(step => {
-                    const performed = service.performedSteps.includes(step.id);
-                    html += `
-                        <div style="display: flex; align-items: center; padding: 6px 0; color: ${performed ? '#10B981' : '#94a3b8'};">
-                            <span style="margin-right: 8px; font-size: 16px;">${performed ? '☑' : '☐'}</span>
-                            <span style="${performed ? '' : 'text-decoration: line-through;'}">${step.label}</span>
-                        </div>
-                    `;
-                });
-            });
-
-            // Add custom steps if any
-            if (service.customSteps && service.customSteps.length > 0) {
-                html += `<div style="font-weight: 700; color: #142B55; margin: 12px 0 8px;">Custom Steps:</div>`;
-                service.customSteps.forEach(customStep => {
-                    html += `
-                        <div style="display: flex; align-items: center; padding: 6px 0; color: #10B981;">
-                            <span style="margin-right: 8px; font-size: 16px;">☑</span>
-                            <span>${customStep}</span>
-                        </div>
-                    `;
-                });
-            }
-
-            return html;
-        }
-
-        function scrollToService(serviceId) {
-            const element = document.getElementById(serviceId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                element.style.backgroundColor = '#FEF3C7';
-                setTimeout(() => {
-                    element.style.backgroundColor = '';
-                    element.style.transition = 'background-color 1s';
-                }, 1500);
-            }
-        }
-
-                function toggleBreakdown(elementId) {
+        function toggleBreakdown(elementId) {
             const element = document.getElementById(elementId);
             if (element.style.display === 'none') {
                 element.style.display = 'block';
@@ -2570,28 +2305,6 @@
                                 <div class="total-amount">$${totalSpent.toFixed(2)}</div>
                             </div>
                         ` : ''}
-                        ${(() => {
-                            const lastServices = {};
-                            vehicle.services.forEach(service => {
-                                service.services.forEach(serviceType => {
-                                    if (!lastServices[serviceType]) {
-                                        lastServices[serviceType] = service;
-                                    }
-                                });
-                            });
-                            if (Object.keys(lastServices).length === 0) return '';
-                            return `
-                                <div style="background: #F8F9FD; padding: 12px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #ADCEE7;">
-                                    <div style="font-weight: 600; color: #2A466F; margin-bottom: 8px; font-size: 13px;">Last Services:</div>
-                                    ${Object.entries(lastServices).map(([type, service]) => {
-                                        const daysAgo = Math.floor((new Date() - new Date(service.date + 'T00:00:00')) / (1000 * 60 * 60 * 24));
-                                        const displayName = type === 'Wash and Shine' ? 'Ceramic' : type;
-                                        const serviceIndex = vehicle.services.indexOf(service);
-                                        return '<div onclick="scrollToService('service-' + vehicle.id + '-' + serviceIndex + '')" style="padding: 6px 0; color: #142B55; cursor: pointer; font-size: 13px;">• ' + displayName + ': <span style="color: #64748b;">' + (daysAgo === 0 ? 'today' : daysAgo === 1 ? '1 day ago' : daysAgo + ' days ago') + ' (' + formatDate(service.date) + ')</span></div>';
-                                    }).join('')}
-                                </div>
-                            `;
-                        })()}
                         ${vehicle.services.length > 0 ? vehicle.services.map((service, index) => {
                             const serviceColor = getServiceColor(service.services);
                             const hasProductCost = service.productCost && service.productCost > 0;
@@ -2601,7 +2314,7 @@
                             const hasBreakdown = service.costBreakdown && service.costBreakdown.length > 0;
                             
                             return `
-                            <div class="service-entry" id="service-${vehicle.id}-${index}" style="border-left: 4px solid ${serviceColor}; scroll-margin-top: 80px;">
+                            <div class="service-entry" style="border-left: 4px solid ${serviceColor};">
                                 <div class="service-header">
                                     <div class="service-type" style="color: ${serviceColor};">${service.services.join(', ')}</div>
                                     <div class="service-cost">$${service.cost.toFixed(2)}</div>
@@ -2627,18 +2340,15 @@
                                             <button 
                                                 onclick="toggleBreakdown('breakdown-${index}')" 
                                                 style="width: 100%; margin-top: 8px; padding: 6px; background: white; border: 1px solid #68C6E6; border-radius: 6px; color: #105495; font-size: 12px; font-weight: 600; cursor: pointer;">
-                                                ${service.performedSteps ? '✓ View Steps Performed' : '📋 View Product Breakdown'}
+                                                📋 View Product Breakdown
                                             </button>
-                                            <div id="breakdown-${index}" style="display: none; margin-top: 8px; padding: 12px; background: white; border-radius: 6px; font-size: 12px;">
-                                                ${service.performedSteps ? renderServiceSteps(service) : `
-                                                    <div style="color: #64748b; margin-bottom: 8px; font-style: italic;">Steps not tracked (old service)</div>
-                                                    ${service.costBreakdown.map(item => `
-                                                        <div style="display: flex; justify-content: space-between; padding: 4px 0; color: #2A466F;">
-                                                            <span>• ${item.product}: ${item.used}</span>
-                                                            <span style="font-weight: 600;">$${item.cost.toFixed(2)}</span>
-                                                        </div>
-                                                    `).join('')}
-                                                `}
+                                            <div id="breakdown-${index}" style="display: none; margin-top: 8px; padding: 8px; background: white; border-radius: 6px; font-size: 12px;">
+                                                ${service.costBreakdown.map(item => `
+                                                    <div style="display: flex; justify-content: space-between; padding: 4px 0; color: #2A466F;">
+                                                        <span>• ${item.product}: ${item.used}</span>
+                                                        <span style="font-weight: 600;">$${item.cost.toFixed(2)}</span>
+                                                    </div>
+                                                `).join('')}
                                             </div>
                                         ` : ''}
                                     </div>
@@ -3216,34 +2926,8 @@
             renderProductLibrary();
         }
 
-        // Service Steps Definitions
-        const serviceStepsDefinitions = {
-            'Basic Wash': [
-                { id: 'wheels_tires', label: 'Wheels/Tires', products: ['Brake Buster', 'Tire Dressing'] },
-                { id: 'foam_wash', label: 'Foam + Contact Wash', products: ['Magic Shampoo'] },
-                { id: 'dry', label: 'Dry', products: [] },
-                { id: 'windows', label: 'Windows', products: ['Tech 582'] },
-                { id: 'interior', label: 'Interior', products: ['XPress Interior'] }
-            ],
-            'Wash and Shine': [
-                { id: 'ceramic', label: 'Apply S0.03 Ceramic', products: ['S0.03 Ceramic'] }
-            ],
-            'Wax': [
-                { id: 'iron_remover', label: 'Iron Remover', products: ['Iron Remover'] },
-                { id: 'clay', label: 'Clay Bar', products: [] },
-                { id: 'wax_apply', label: 'Apply Wax', products: ['Collinite 845', 'IPA'] }
-            ],
-            'Full Detail': [
-                { id: 'paint_correction', label: 'Paint Correction', products: ['3D One Polish'] },
-                { id: 'polish', label: 'Polish', products: ['Jescar Polish'] }
-            ],
-            'Rinseless Wash': [
-                { id: 'rinseless_apply', label: 'Apply Rinseless', products: ['P&S Absolute'] }
-            ]
-        };
-
         // Calculate product usage and cost for a service
-        function calculateServiceCost(services, vehicleSize, performedSteps = null) {
+        function calculateServiceCost(services, vehicleSize) {
             let totalCost = 0;
             const breakdown = [];
 
@@ -3257,10 +2941,8 @@
 
             services.forEach(serviceName => {
                 if (serviceName.includes('Basic Wash') || serviceName.includes('Rinseless')) {
-                    const stepPerformed = (stepId) => !performedSteps || performedSteps.includes(stepId);
-                    
                     // Magic Shampoo: 2.5 oz per vehicle (all sizes)
-                    if (serviceName.includes('Basic Wash') && stepPerformed('foam_wash')) {
+                    if (serviceName.includes('Basic Wash')) {
                         const shampoo = products.find(p => p.name.includes('Magic'));
                         if (shampoo && shampoo.cost > 0) {
                             const used = 2.5;
@@ -3271,7 +2953,7 @@
                     }
 
                     // P&S Absolute Rinseless: 1 cap (~0.5 oz) per vehicle
-                    if (serviceName.includes('Rinseless') && stepPerformed('rinseless_apply')) {
+                    if (serviceName.includes('Rinseless')) {
                         const absolute = products.find(p => p.name.includes('Absolute'));
                         if (absolute && absolute.cost > 0) {
                             const used = 0.5;
@@ -3281,123 +2963,118 @@
                         }
                     }
 
-                    // Brake Buster (only if wheels/tires step was performed)
-                    if (stepPerformed('wheels_tires')) {
-                        const bb = products.find(p => p.name.includes('Brake Buster'));
-                        if (bb && bb.cost > 0) {
-                            const bbInBottle = 9;
-                            const percentUsed = 0.20 * sizeMultiplier;
-                            const used = bbInBottle * percentUsed;
-                            const cost = (used / bb.size) * bb.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Brake Buster', used: used.toFixed(2) + ' oz', cost });
-                        }
-
-                        // Tire Dressing
-                        const tire = products.find(p => p.name.includes('Extreme Tire'));
-                        if (tire && tire.cost > 0) {
-                            const used = 1;
-                            const cost = (used / tire.size) * tire.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Tire Dressing', used: used.toFixed(2) + ' oz', cost });
-                        }
+                    // Brake Buster in IK Foamer (35 oz total capacity)
+                    // Light (1:5): 6 oz BB + 29 oz water = 35 oz | Use ~20% per vehicle
+                    // Moderate (1:3): 9 oz BB + 26 oz water = 35 oz | Use ~20% per vehicle  
+                    // Heavy (1:1): 17 oz BB + 18 oz water = 35 oz | Use ~20% per vehicle
+                    // Average usage: assume moderate ratio, 20% of foamer per vehicle
+                    const bb = products.find(p => p.name.includes('Brake Buster'));
+                    if (bb && bb.cost > 0) {
+                        const bbInBottle = 9; // oz of concentrate in a 1:3 mix (moderate)
+                        const percentUsed = 0.20 * sizeMultiplier; // 20% base, scales with vehicle
+                        const used = bbInBottle * percentUsed;
+                        const cost = (used / bb.size) * bb.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Brake Buster', used: used.toFixed(2) + ' oz', cost });
                     }
 
-                    // XPress Interior (only if interior step was performed)
-                    if (stepPerformed('interior')) {
-                        const xpress = products.find(p => p.name.includes('XPress'));
-                        if (xpress && xpress.cost > 0) {
-                            const xpressInBottle = 3.4;
-                            const percentUsed = 0.10 * sizeMultiplier;
-                            const used = xpressInBottle * percentUsed;
-                            const cost = (used / xpress.size) * xpress.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'XPress Interior', used: used.toFixed(2) + ' oz', cost });
-                        }
+                    // XPress Interior in 16.9 oz spray bottle (4:1 ratio)
+                    // 16.9 oz total = 13.5 oz water + 3.4 oz XPress
+                    // Use ~10% of bottle per vehicle
+                    const xpress = products.find(p => p.name.includes('XPress'));
+                    if (xpress && xpress.cost > 0) {
+                        const xpressInBottle = 3.4; // oz of concentrate in bottle
+                        const percentUsed = 0.10 * sizeMultiplier; // 10% base, scales with vehicle
+                        const used = xpressInBottle * percentUsed;
+                        const cost = (used / xpress.size) * xpress.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'XPress Interior', used: used.toFixed(2) + ' oz', cost });
                     }
 
-                    // Tech 582 (only if windows step was performed)
-                    if (stepPerformed('windows')) {
-                        const tech = products.find(p => p.name.includes('Tech 582'));
-                        if (tech && tech.cost > 0) {
-                            const techInBottle = 16.9;
-                            const percentUsed = 0.15 * sizeMultiplier;
-                            const used = techInBottle * percentUsed;
-                            const cost = (used / tech.size) * tech.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Tech 582', used: used.toFixed(2) + ' oz', cost });
-                        }
+                    // Tech 582 in 1 liter (33.8 oz) spray bottle (1:1 ratio)
+                    // 33.8 oz total = 16.9 oz Tech + 16.9 oz water
+                    // Use ~15% of bottle per vehicle
+                    const tech = products.find(p => p.name.includes('Tech 582'));
+                    if (tech && tech.cost > 0) {
+                        const techInBottle = 16.9; // oz of concentrate in bottle
+                        const percentUsed = 0.15 * sizeMultiplier; // 15% base, scales with vehicle
+                        const used = techInBottle * percentUsed;
+                        const cost = (used / tech.size) * tech.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Tech 582', used: used.toFixed(2) + ' oz', cost });
                     }
+
+                    // Tire Dressing: 1 oz per vehicle (all 4 wheels)
+                    const tire = products.find(p => p.name.includes('Extreme Tire'));
+                    if (tire && tire.cost > 0) {
+                        const used = 1;
+                        const cost = (used / tire.size) * tire.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Tire Dressing', used: used.toFixed(2) + ' oz', cost });
+                    }
+
+                    // Green Star in 64 oz sprayer (if used for wheels instead of BB)
+                    // This is optional - only if you use GS for tires/wheels
+                    // Skipping for now since BB is primary wheel cleaner
                 }
 
                 if (serviceName.includes('Wash and Shine')) {
-                    const stepPerformed = (stepId) => !performedSteps || performedSteps.includes(stepId);
-                    if (stepPerformed('ceramic')) {
-                        const ceramic = products.find(p => p.name.includes('S0.03'));
-                        if (ceramic && ceramic.cost > 0) {
-                            const used = 0.75;
-                            const cost = (used / ceramic.size) * ceramic.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'S0.03 Ceramic', used: used.toFixed(2) + ' oz', cost });
-                        }
+                    // S0.03: flat 0.75 oz per vehicle (NO vehicle size scaling)
+                    const ceramic = products.find(p => p.name.includes('S0.03'));
+                    if (ceramic && ceramic.cost > 0) {
+                        const used = 0.75; // Flat rate for all vehicles
+                        const cost = (used / ceramic.size) * ceramic.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'S0.03 Ceramic', used: used.toFixed(2) + ' oz', cost });
                     }
                 }
 
                 if (serviceName.includes('Wax') || serviceName.includes('Full Detail')) {
-                    const stepPerformed = (stepId) => !performedSteps || performedSteps.includes(stepId);
-                    
-                    // Iron Remover
-                    if (stepPerformed('iron_remover')) {
-                        const iron = products.find(p => p.name.includes('Iron Remover'));
-                        if (iron && iron.cost > 0) {
-                            const used = 4 * sizeMultiplier;
-                            const cost = (used / iron.size) * iron.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Iron Remover', used: used.toFixed(1) + ' oz', cost });
-                        }
+                    // Iron Remover: 4 oz per vehicle
+                    const iron = products.find(p => p.name.includes('Iron Remover'));
+                    if (iron && iron.cost > 0) {
+                        const used = 4 * sizeMultiplier;
+                        const cost = (used / iron.size) * iron.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Iron Remover', used: used.toFixed(1) + ' oz', cost });
                     }
 
-                    // Wax application (includes IPA)
-                    if (stepPerformed('wax_apply')) {
-                        const ipa = products.find(p => p.name.includes('IPA'));
-                        if (ipa && ipa.cost > 0) {
-                            const used = 8 * sizeMultiplier;
-                            const cost = (used / ipa.size) * ipa.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'IPA Wipe', used: used.toFixed(1) + ' oz', cost });
-                        }
+                    // IPA: 8 oz per vehicle
+                    const ipa = products.find(p => p.name.includes('IPA'));
+                    if (ipa && ipa.cost > 0) {
+                        const used = 8 * sizeMultiplier;
+                        const cost = (used / ipa.size) * ipa.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'IPA Wipe', used: used.toFixed(1) + ' oz', cost });
+                    }
 
-                        const wax = products.find(p => p.name.includes('Collinite'));
-                        if (wax && wax.cost > 0) {
-                            const used = 1 * sizeMultiplier;
-                            const cost = (used / wax.size) * wax.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Collinite 845', used: used.toFixed(1) + ' oz', cost });
-                        }
+                    // Collinite 845: 1 oz per vehicle (machine applied)
+                    const wax = products.find(p => p.name.includes('Collinite'));
+                    if (wax && wax.cost > 0) {
+                        const used = 1 * sizeMultiplier;
+                        const cost = (used / wax.size) * wax.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Collinite 845', used: used.toFixed(1) + ' oz', cost });
                     }
                 }
 
                 if (serviceName.includes('Full Detail')) {
-                    const stepPerformed = (stepId) => !performedSteps || performedSteps.includes(stepId);
-                    
-                    if (stepPerformed('paint_correction')) {
-                        const polish3d = products.find(p => p.name.includes('3D One'));
-                        if (polish3d && polish3d.cost > 0) {
-                            const used = 2 * sizeMultiplier;
-                            const cost = (used / polish3d.size) * polish3d.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: '3D One Polish', used: used.toFixed(1) + ' oz', cost });
-                        }
+                    // 3D Polish: 2 oz per vehicle (machine applied)
+                    const polish3d = products.find(p => p.name.includes('3D One'));
+                    if (polish3d && polish3d.cost > 0) {
+                        const used = 2 * sizeMultiplier;
+                        const cost = (used / polish3d.size) * polish3d.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: '3D One Polish', used: used.toFixed(1) + ' oz', cost });
                     }
 
-                    if (stepPerformed('polish')) {
-                        const jescar = products.find(p => p.name.includes('Jescar'));
-                        if (jescar && jescar.cost > 0) {
-                            const used = 2 * sizeMultiplier;
-                            const cost = (used / jescar.size) * jescar.cost;
-                            totalCost += cost;
-                            breakdown.push({ product: 'Jescar Polish', used: used.toFixed(1) + ' oz', cost });
-                        }
+                    // Jescar Polish: 2 oz per vehicle (machine applied)
+                    const jescar = products.find(p => p.name.includes('Jescar'));
+                    if (jescar && jescar.cost > 0) {
+                        const used = 2 * sizeMultiplier;
+                        const cost = (used / jescar.size) * jescar.cost;
+                        totalCost += cost;
+                        breakdown.push({ product: 'Jescar Polish', used: used.toFixed(1) + ' oz', cost });
                     }
                 }
             });
@@ -3444,141 +3121,6 @@
             if (services.includes('Wash and Shine')) return '#8B5CF6'; // Purple
             if (services.includes('Rinseless Wash')) return '#06B6D4'; // Cyan
             return '#3B82F6'; // Blue for Basic Wash
-        }
-
-
-
-        function toggleStatsMenu() {
-            const dropdown = document.getElementById('statsDropdown');
-            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function hideStatsMenu() {
-            document.getElementById('statsDropdown').style.display = 'none';
-        }
-
-        function showStatsDetail(period, title) {
-            document.getElementById('statsDetailTitle').textContent = title;
-            
-            const now = new Date();
-            let startDate, endDate;
-            
-            if (period === 'month') {
-                startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-                endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-            } else if (period === 'ytd') {
-                startDate = new Date(now.getFullYear(), 0, 1);
-                endDate = now;
-            } else if (period === 'year') {
-                startDate = new Date(now.getFullYear(), 0, 1);
-                endDate = new Date(now.getFullYear(), 11, 31);
-            }
-            
-            const periodServices = [];
-            let totalIncome = 0;
-            let totalProductCost = 0;
-            let totalHours = 0;
-            
-            clients.forEach(client => {
-                if (client.isFamily) return;
-                
-                client.vehicles.forEach(vehicle => {
-                    vehicle.services.forEach(service => {
-                        const serviceDate = new Date(service.date + 'T00:00:00');
-                        if (serviceDate >= startDate && serviceDate <= endDate) {
-                            periodServices.push({
-                                clientName: client.name,
-                                vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                                service: service.services.join(', '),
-                                cost: service.cost,
-                                productCost: service.productCost || 0,
-                                duration: service.duration || 0,
-                                date: service.date
-                            });
-                            totalIncome += service.cost;
-                            totalProductCost += service.productCost || 0;
-                            totalHours += parseFloat(service.duration) || 0;
-                        }
-                    });
-                });
-            });
-            
-            const profit = totalIncome - totalProductCost;
-            const margin = totalIncome > 0 ? (profit / totalIncome * 100) : 0;
-            const avgPerJob = periodServices.length > 0 ? totalIncome / periodServices.length : 0;
-            const hourlyRate = totalHours > 0 ? profit / totalHours : 0;
-            
-            // Render summary
-            document.getElementById('statsDetailSummary').innerHTML = `
-                <div style="color: white; font-size: 14px; margin-bottom: 8px;">Total Income</div>
-                <div style="color: white; font-size: 36px; font-weight: 700; margin-bottom: 20px;">$${totalIncome.toFixed(2)}</div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
-                    <div>
-                        <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Product Cost</div>
-                        <div style="color: white; font-size: 18px; font-weight: 700;">$${totalProductCost.toFixed(0)}</div>
-                    </div>
-                    <div>
-                        <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Net Profit</div>
-                        <div style="color: white; font-size: 18px; font-weight: 700;">$${profit.toFixed(0)}</div>
-                    </div>
-                    <div>
-                        <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Profit Margin</div>
-                        <div style="color: white; font-size: 18px; font-weight: 700;">${margin.toFixed(1)}%</div>
-                    </div>
-                    <div>
-                        <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Total Jobs</div>
-                        <div style="color: white; font-size: 18px; font-weight: 700;">${periodServices.length}</div>
-                    </div>
-                    <div>
-                        <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Avg per Job</div>
-                        <div style="color: white; font-size: 18px; font-weight: 700;">$${avgPerJob.toFixed(0)}</div>
-                    </div>
-                    ${totalHours > 0 ? `
-                        <div>
-                            <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Hours / $/hr</div>
-                            <div style="color: white; font-size: 18px; font-weight: 700;">${totalHours.toFixed(1)} / $${hourlyRate.toFixed(0)}</div>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-            
-            // Render services list
-            document.getElementById('statsDetailServices').innerHTML = periodServices
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .map(s => `
-                    <div style="padding: 12px; background: white; border-radius: 8px; margin-bottom: 8px; border: 1px solid #ADCEE7;">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 4px;">
-                            <div>
-                                <div style="font-weight: 600; color: #142B55;">${s.clientName} - ${s.vehicle}</div>
-                                <div style="color: #64748b; font-size: 13px;">${s.service}</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-weight: 700; color: #10B981; font-size: 16px;">$${s.cost.toFixed(2)}</div>
-                                <div style="color: #64748b; font-size: 12px;">${formatDate(s.date)}</div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            
-            showScreen('statsDetail');
-        }
-
-
-        function exportToHTML() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            const now = new Date();
-            const filename = `car-wash-app-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}.html`;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            alert('App exported! Rename this file to "index.html" when uploading to GitHub.');
         }
 
         init();
