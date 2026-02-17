@@ -410,6 +410,91 @@
         .client-grid-btn:active {
             background: #ADCEE7;
         }
+    
+        .last-services {
+            background: #FEF3C7;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .last-services-title {
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 8px;
+        }
+
+        .last-service-item {
+            padding: 4px 0;
+            color: #78350F;
+            cursor: pointer;
+        }
+
+        .last-service-item:hover {
+            text-decoration: underline;
+        }
+
+        .service-entry.highlighted {
+            animation: highlight 1s ease-in-out;
+        }
+
+        @keyframes highlight {
+            0%, 100% { background: white; }
+            50% { background: #FEF3C7; }
+        }
+
+    
+        .step-category {
+            margin-bottom: 16px;
+        }
+
+        .step-category-title {
+            font-weight: 700;
+            color: #142B55;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .custom-step-input {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .custom-step-input input {
+            flex: 1;
+            padding: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .custom-step-input button {
+            background: #105495;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -461,6 +546,7 @@
             <div class="main-menu">
                 <button class="btn" onclick="showScreen('quickLog')">Service Log</button>
                 <button class="btn" onclick="showScreen('manageClients')">Manage Clients</button>
+                <button class="btn" onclick="showScreen('dashboard')">📊 Dashboard</button>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
@@ -642,6 +728,109 @@
             <button class="back-btn" onclick="viewClientProfile(currentClientId)">Cancel</button>
         </div>
 
+        
+        <!-- Dashboard -->
+        <div id="dashboard" class="card screen">
+            <button class="back-btn" onclick="showScreen('mainMenu')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;">Income Dashboard</h2>
+            
+            <!-- Green income box with This Month, Year to Date, All Time -->
+            <div style="background: #10B981; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <div style="color: white; font-size: 14px;">This Month:</div>
+                    <div style="color: white; font-size: 18px; font-weight: 700;" id="dashThisMonth">$0.00</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <div style="color: white; font-size: 14px;">Year to Date:</div>
+                    <div style="color: white; font-size: 18px; font-weight: 700;" id="dashYTD">$0.00</div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="color: white; font-size: 14px;">All Time:</div>
+                    <div style="color: white; font-size: 18px; font-weight: 700;" id="dashAllTime">$0.00</div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                <div style="background: #F8F9FD; padding: 14px; border-radius: 10px; text-align: center; border: 2px solid #ADCEE7;">
+                    <div style="color: #64748b; font-size: 13px; margin-bottom: 4px;">Avg Per Job</div>
+                    <div style="color: #142B55; font-size: 22px; font-weight: 700;" id="dashAvgJob">$0</div>
+                </div>
+                <div style="background: #F8F9FD; padding: 14px; border-radius: 10px; text-align: center; border: 2px solid #ADCEE7;">
+                    <div style="color: #64748b; font-size: 13px; margin-bottom: 4px;">Total Jobs</div>
+                    <div style="color: #142B55; font-size: 22px; font-weight: 700;" id="dashTotalJobs">0</div>
+                </div>
+                <div style="background: #F8F9FD; padding: 14px; border-radius: 10px; text-align: center; border: 2px solid #ADCEE7;">
+                    <div style="color: #64748b; font-size: 13px; margin-bottom: 4px;">Hourly Rate</div>
+                    <div style="color: #142B55; font-size: 22px; font-weight: 700;" id="dashHourlyRate">$0</div>
+                </div>
+                <div style="background: #F8F9FD; padding: 14px; border-radius: 10px; text-align: center; border: 2px solid #ADCEE7;">
+                    <div style="color: #64748b; font-size: 13px; margin-bottom: 4px;">Total Hours</div>
+                    <div style="color: #142B55; font-size: 22px; font-weight: 700;" id="dashTotalHours">0.0</div>
+                </div>
+            </div>
+
+            <!-- View Stats Dropdown -->
+            <div style="position: relative; margin-bottom: 20px;">
+                <button onclick="toggleStatsDropdown()" style="width: 100%; background: linear-gradient(135deg, #105495 0%, #54A4D5 100%); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;">
+                    View Stats ▼
+                </button>
+                <div id="statsDropdown" class="hidden" style="position: absolute; width: 100%; background: white; border: 2px solid #105495; border-radius: 8px; margin-top: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 100;">
+                    <div onclick="showMonthDetail()" style="padding: 12px; cursor: pointer; border-bottom: 1px solid #e2e8f0;">This Month Details</div>
+                    <div onclick="showYTDDetail()" style="padding: 12px; cursor: pointer; border-bottom: 1px solid #e2e8f0;">Year to Date Details</div>
+                    <div onclick="showYearDetail()" style="padding: 12px; cursor: pointer; border-bottom: 1px solid #e2e8f0;">2026 Summary</div>
+                    <div onclick="showPreviousYearDetail()" style="padding: 12px; cursor: pointer; border-bottom: 1px solid #e2e8f0;">2025 Summary</div>
+                    <div onclick="showMonthlyComparison(); toggleStatsDropdown();" style="padding: 12px; cursor: pointer;">Compare Months</div>
+                </div>
+            </div>
+            
+            <h3 style="color: #142B55; margin-bottom: 12px;">Service Reminders</h3>
+            <div id="dashboardReminders"></div>
+        </div>
+
+        
+        <!-- Month Detail Screen -->
+        <div id="monthDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;" id="monthDetailTitle">This Month Details</h2>
+            
+            <div id="monthDetailContent"></div>
+        </div>
+
+        <!-- YTD Detail Screen -->
+        <div id="ytdDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;">Year to Date Details</h2>
+            
+            <div id="ytdDetailContent"></div>
+        </div>
+
+        <!-- Year Detail Screen -->
+        <div id="yearDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;" id="yearDetailTitle">2026 Summary</h2>
+            
+            <div id="yearDetailContent"></div>
+        </div>
+
+
+        <!-- Date Picker Modal for Repeat Service -->
+        <div id="datePicker" class="card screen">
+            <h2 style="color: #142B55; margin-bottom: 20px;">Select Service Date</h2>
+            
+            <div class="input-group">
+                <label>Service Date</label>
+                <input type="date" id="repeatServiceDate" style="padding: 12px; border: 2px solid #ADCEE7; border-radius: 8px; font-size: 16px;">
+            </div>
+            
+            <button class="submit-btn" onclick="confirmRepeatDate()">Continue</button>
+            <button class="back-btn" onclick="cancelRepeatService()">Cancel</button>
+        </div>
+
         <!-- Quick Log Service - Client Select -->
         <div id="quickLog" class="card screen">
             <button class="back-btn" onclick="showScreen('mainMenu')" style="margin-bottom: 16px;">← Back to Menu</button>
@@ -668,6 +857,34 @@
             <button class="back-btn" onclick="showScreen('mainMenu'); calculateMainMenuStats();">← Back</button>
         </div>
 
+        
+        <!-- Month Detail Screen -->
+        <div id="monthDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;" id="monthDetailTitle">This Month Details</h2>
+            
+            <div id="monthDetailContent"></div>
+        </div>
+
+        <!-- YTD Detail Screen -->
+        <div id="ytdDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;">Year to Date Details</h2>
+            
+            <div id="ytdDetailContent"></div>
+        </div>
+
+        <!-- Year Detail Screen -->
+        <div id="yearDetail" class="card screen">
+            <button class="back-btn" onclick="showScreen('dashboard')" style="margin-bottom: 16px;">← Back</button>
+            
+            <h2 style="color: #142B55; margin-bottom: 20px;" id="yearDetailTitle">2026 Summary</h2>
+            
+            <div id="yearDetailContent"></div>
+        </div>
+
         <!-- Quick Log - Vehicle Select -->
         <div id="selectVehicle" class="card screen">
             <h2 style="margin-bottom: 16px; color: #334155;" id="selectedClientName"></h2>
@@ -681,26 +898,33 @@
             <p style="color: #64748b; margin-bottom: 16px;" id="serviceVehicleInfo"></p>
             
             <div class="checkbox-group">
-                <div class="checkbox-item" onclick="toggleService('basic')">
+                <div class="checkbox-item" onclick="toggleService('basic'); updateServiceStepsDisplay();">
                     <input type="checkbox" id="service-basic">
                     <label>Basic Wash</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('shine')">
+                <div class="checkbox-item" onclick="toggleService('shine'); updateServiceStepsDisplay();">
                     <input type="checkbox" id="service-shine">
                     <label>Wash and Shine</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('wax')">
+                <div class="checkbox-item" onclick="toggleService('wax'); updateServiceStepsDisplay();">
                     <input type="checkbox" id="service-wax">
                     <label>Wax</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('detail')">
+                <div class="checkbox-item" onclick="toggleService('detail'); updateServiceStepsDisplay();">
                     <input type="checkbox" id="service-detail">
                     <label>Full Detail</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('rinseless')">
+                <div class="checkbox-item" onclick="toggleService('rinseless'); updateServiceStepsDisplay();">
                     <input type="checkbox" id="service-rinseless">
                     <label>Rinseless Wash</label>
                 </div>
+            </div>
+
+
+            <!-- Service Steps Section -->
+            <div id="serviceStepsSection" class="hidden" style="margin-top: 16px; margin-bottom: 16px;">
+                <h3 style="color: #142B55; margin-bottom: 12px; font-size: 16px;">Service Steps</h3>
+                <div id="serviceStepsContainer"></div>
             </div>
 
             <div class="input-row">
@@ -786,7 +1010,10 @@
 
             <div id="profileVehicles"></div>
 
-            <button class="add-vehicle-btn" onclick="showAddVehicleScreen()">+ Add Vehicle</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <button class="add-vehicle-btn" onclick="showAddVehicleScreen()">+ Add Vehicle</button>
+                <button class="add-vehicle-btn" onclick="goToServiceLogForClient()">+ Add Service</button>
+            </div>
             <button class="back-btn" onclick="showScreen('manageClients'); renderClients();">← Back to Clients</button>
         </div>
 
@@ -976,6 +1203,86 @@
         let expenses = [];
         let products = [];
         let currentClientId = null;
+
+        // Service Steps Definitions
+        const SERVICE_STEPS = {
+            'Basic Wash': {
+                'Basic Wash Steps': [
+                    { id: 'wheels_tires', label: 'Wheels/Tires' },
+                    { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'windows', label: 'Windows' },
+                    { id: 'interior_wipe', label: 'Interior Wipe Down' },
+                    { id: 'vacuum', label: 'Vacuum' },
+                    { id: 'tire_dressing', label: 'Tire Dressing' }
+                ]
+            },
+            'Wash and Shine': {
+                'Basic Wash Steps': [
+                    { id: 'wheels_tires', label: 'Wheels/Tires' },
+                    { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'windows', label: 'Windows' },
+                    { id: 'interior_wipe', label: 'Interior Wipe Down' },
+                    { id: 'vacuum', label: 'Vacuum' },
+                    { id: 'tire_dressing', label: 'Tire Dressing' }
+                ],
+                'Ceramic Steps': [
+                    { id: 'ceramic_application', label: 'S0.03 Ceramic Application' }
+                ]
+            },
+            'Wax': {
+                'Basic Wash Steps': [
+                    { id: 'wheels_tires', label: 'Wheels/Tires' },
+                    { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'windows', label: 'Windows' },
+                    { id: 'interior_wipe', label: 'Interior Wipe Down' },
+                    { id: 'vacuum', label: 'Vacuum' },
+                    { id: 'tire_dressing', label: 'Tire Dressing' }
+                ],
+                'Decon Steps': [
+                    { id: 'iron_remover', label: 'Iron Remover' },
+                    { id: 'clay', label: 'Clay Bar' }
+                ],
+                'Wax Steps': [
+                    { id: 'ipa_wipe', label: 'IPA Wipe Down' },
+                    { id: 'wax_collinite', label: 'Wax (Collinite)' }
+                ]
+            },
+            'Full Detail': {
+                'Basic Wash Steps': [
+                    { id: 'wheels_tires', label: 'Wheels/Tires' },
+                    { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'windows', label: 'Windows' },
+                    { id: 'interior_wipe', label: 'Interior Wipe Down' },
+                    { id: 'vacuum', label: 'Vacuum' },
+                    { id: 'tire_dressing', label: 'Tire Dressing' }
+                ],
+                'Decon Steps': [
+                    { id: 'iron_remover', label: 'Iron Remover' },
+                    { id: 'clay', label: 'Clay Bar' }
+                ],
+                'Paint Correction Steps': [
+                    { id: 'compound_3d', label: 'Compound (3D One)' },
+                    { id: 'polish_jescar', label: 'Polish (Jescar)' }
+                ],
+                'Wax Steps': [
+                    { id: 'ipa_wipe', label: 'IPA Wipe Down' },
+                    { id: 'wax_collinite', label: 'Wax (Collinite)' }
+                ]
+            },
+            'Rinseless Wash': {
+                'Rinseless Steps': [
+                    { id: 'rinseless_wheels', label: 'Wheels/Tires' },
+                    { id: 'rinseless_wash', label: 'Rinseless Wash' },
+                    { id: 'windows', label: 'Windows' },
+                    { id: 'interior_wipe', label: 'Interior Wipe Down' },
+                    { id: 'vacuum', label: 'Vacuum' },
+                    { id: 'tire_dressing', label: 'Tire Dressing' }
+                ]
+            }
+        };
+        let customSteps = [];
+
+        let clearedReminders = [];
         let currentVehicleId = null;
 
         function init() {
@@ -1073,9 +1380,10 @@
             const reminders = [];
 
             clients.forEach(client => {
+                if (client.isFamily) return; // Keep family - show their reminders
+                
                 client.vehicles.forEach(vehicle => {
-                    // Skip inactive vehicles
-                    if (vehicle.isInactive) return;
+                    if (vehicle.isInactive) return; // Skip inactive vehicles
                     if (vehicle.services.length === 0) return;
 
                     const sortedServices = [...vehicle.services].sort((a, b) => 
@@ -1086,45 +1394,26 @@
                     const lastServiceDate = new Date(lastService.date + 'T00:00:00');
                     const daysSince = Math.floor((now - lastServiceDate) / (1000 * 60 * 60 * 24));
 
-                    // Auto-clear reminders after 90 days of no contact
-                    if (daysSince >= 90) return;
+                    // Check if cleared
+                    const reminderKey = `${client.id}-${vehicle.id}`;
+                    if (clearedReminders.includes(reminderKey)) return;
 
-                    const hasWax = lastService.services.some(s => s.includes('Wax'));
-                    if (hasWax && daysSince >= 75) {
+                    // NEW THRESHOLDS: Basic=45d, Wash&Shine=90d, Wax=150d, Detail=365d
+                    const serviceType = lastService.services[0];
+                    let threshold = 0;
+                    
+                    if (serviceType === 'Basic Wash' || serviceType === 'Rinseless Wash') threshold = 45;
+                    else if (serviceType === 'Wash and Shine') threshold = 90;
+                    else if (serviceType === 'Wax') threshold = 150;
+                    else if (serviceType === 'Full Detail') threshold = 365;
+
+                    if (daysSince >= threshold) {
                         reminders.push({
                             client: client.name,
+                            clientId: client.id,
                             vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                            message: `Wax due soon (${daysSince} days since last)`,
-                            type: 'wax'
-                        });
-                    }
-
-                    const hasCeramic = lastService.services.some(s => s.includes('Wash and Shine'));
-                    if (hasCeramic && daysSince >= 75) {
-                        reminders.push({
-                            client: client.name,
-                            vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                            message: `Ceramic sealant due (${daysSince} days since last)`,
-                            type: 'ceramic'
-                        });
-                    }
-
-                    const hasDetail = lastService.services.some(s => s.includes('Full Detail'));
-                    if (hasDetail && daysSince >= 150) {
-                        reminders.push({
-                            client: client.name,
-                            vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                            message: `Detail due (${daysSince} days since last)`,
-                            type: 'detail'
-                        });
-                    }
-
-                    if (daysSince >= 45) {
-                        reminders.push({
-                            client: client.name,
-                            vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                            message: `Haven't seen in ${daysSince} days`,
-                            type: 'inactive'
+                            message: `Last ${serviceType}: ${daysSince} days ago`,
+                            days: daysSince
                         });
                     }
                 });
@@ -1136,15 +1425,26 @@
                 return;
             }
 
+            // Sort by most overdue
+            reminders.sort((a, b) => b.days - a.days);
+
             const html = `
                 <div style="background: #FEF3C7; border: 2px solid #F59E0B; padding: 12px; border-radius: 8px;">
-                    <div style="font-weight: 700; color: #92400E; margin-bottom: 8px; font-size: 14px;">⚠️ Service Reminders</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="font-weight: 700; color: #92400E; font-size: 14px;">🔔 Service Reminders</div>
+                        <button onclick="clearAllReminders()" style="background: white; border: 2px solid #92400E; color: #92400E; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">Clear All</button>
+                    </div>
                     ${reminders.slice(0, 3).map(r => `
-                        <div style="color: #78350F; font-size: 13px; margin-bottom: 4px;">
-                            • ${r.client} (${r.vehicle}): ${r.message}
+                        <div style="background: #FEF3C7; padding: 8px; border-radius: 6px; margin-bottom: 4px; border: 1px solid #F59E0B; position: relative;">
+                            <button onclick="event.stopPropagation(); clearSingleReminder('${r.clientId}', '${r.vehicle}'); event.preventDefault();" style="position: absolute; top: 4px; right: 4px; background: #DC2626; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 14px;">×</button>
+                            <div onclick="viewClientProfile('${r.clientId}')" style="cursor: pointer; padding-right: 30px;">
+                                <div style="font-weight: 600; color: #92400E;">${r.client}</div>
+                                <div style="color: #78350F; font-size: 13px;">${r.vehicle}</div>
+                                <div style="color: #A16207; font-size: 12px; margin-top: 2px;">${r.message}</div>
+                            </div>
                         </div>
                     `).join('')}
-                    ${reminders.length > 3 ? `<div style="color: #78350F; font-size: 12px; margin-top: 4px;">+${reminders.length - 3} more</div>` : ''}
+                    ${reminders.length > 3 ? `<div style="color: #78350F; font-size: 12px; margin-top: 4px; text-align: center;">+${reminders.length - 3} more clients</div>` : ''}
                 </div>
             `;
             container.innerHTML = html;
@@ -1285,6 +1585,7 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
 
+            if (screenId === 'dashboard') updateDashboard();
             if (screenId === 'quickLog') {
                 renderQuickLogClients();
             } else if (screenId === 'manageClients') {
@@ -1586,26 +1887,39 @@
             document.getElementById('serviceCost').value = '';
             document.getElementById('serviceDuration').value = '';
             document.getElementById('serviceNotes').value = '';
+            customSteps = [];
+            document.getElementById('serviceStepsSection').classList.add('hidden');
             setDefaultDate();
             
             showScreen('logServiceForm');
         }
 
+        // Store the service to repeat
+        let pendingRepeatService = null;
+        
         function repeatLastService(vehicle, lastService) {
-            // Prompt for date
+            // Store for later
+            pendingRepeatService = { vehicle, lastService };
+            
+            // Set today's date as default
             const todayString = new Date().toISOString().split('T')[0];
-            const newDate = prompt('Enter service date (YYYY-MM-DD):', todayString);
+            document.getElementById('repeatServiceDate').value = todayString;
+            
+            // Show date picker modal
+            showScreen('datePicker');
+        }
+        
+        function confirmRepeatDate() {
+            const newDate = document.getElementById('repeatServiceDate').value;
             
             if (!newDate) {
-                // User cancelled
+                alert('Please select a date');
                 return;
             }
             
-            // Validate date format
-            if (!/^\d{4}-\d{2}-\d{2}$/.test(newDate)) {
-                alert('Invalid date format. Please use YYYY-MM-DD');
-                return;
-            }
+            if (!pendingRepeatService) return;
+            
+            const { vehicle, lastService } = pendingRepeatService;
             
             // Calculate product cost for this service
             const vehicleSize = determineVehicleSize(vehicle);
@@ -2273,6 +2587,24 @@
 
             document.getElementById('profileClientName').textContent = client.name;
             
+            // Get reminders for this client
+            const clientReminders = getClientReminders(clientId);
+            const remindersHTML = clientReminders.length > 0 ? `
+                <div style="background: #FEF3C7; border: 2px solid #F59E0B; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+                    <div style="font-weight: 700; color: #92400E; margin-bottom: 12px; font-size: 16px;">🔔 Service Reminders</div>
+                    ${clientReminders.map(r => `
+                        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #F59E0B;">
+                            <div style="font-weight: 600; color: #142B55; margin-bottom: 4px;">${r.vehicle}</div>
+                            <div style="color: #78350F; font-size: 14px; margin-bottom: 8px;">${r.message}</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <button onclick="clearClientReminder('${r.vehicleId}')" style="background: #10B981; color: white; border: none; padding: 8px; border-radius: 6px; font-weight: 600; cursor: pointer;">Clear</button>
+                                <button onclick="snoozeClientReminder('${r.vehicleId}')" style="background: #F59E0B; color: white; border: none; padding: 8px; border-radius: 6px; font-weight: 600; cursor: pointer;">Snooze</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : '';
+            
             // Add total spent display above vehicles
             const totalSpentHTML = grandTotal > 0 ? `
                 <div style="background: linear-gradient(135deg, #105495 0%, #54A4D5 100%); padding: 16px; border-radius: 12px; margin-bottom: 20px;">
@@ -2283,7 +2615,7 @@
 
             const container = document.getElementById('profileVehicles');
             
-            container.innerHTML = totalSpentHTML + client.vehicles.map(vehicle => {
+            container.innerHTML = remindersHTML + totalSpentHTML + client.vehicles.map(vehicle => {
                 const totalSpent = vehicle.services.reduce((sum, s) => sum + s.cost, 0);
                 const isInactive = vehicle.isInactive || false;
                 
@@ -2299,13 +2631,8 @@
                                 <span>Inactive (hide from reminders)</span>
                             </label>
                         </div>
-                        ${totalSpent > 0 ? `
-                            <div class="total-display">
-                                <div class="total-label">Vehicle Total</div>
-                                <div class="total-amount">$${totalSpent.toFixed(2)}</div>
-                            </div>
-                        ` : ''}
-                        ${vehicle.services.length > 0 ? vehicle.services.map((service, index) => {
+                        
+                        ${vehicle.services.length > 0 ? [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date)).map((service, index) => {
                             const serviceColor = getServiceColor(service.services);
                             const hasProductCost = service.productCost && service.productCost > 0;
                             const profit = service.profit || (service.cost - (service.productCost || 0));
@@ -2314,7 +2641,7 @@
                             const hasBreakdown = service.costBreakdown && service.costBreakdown.length > 0;
                             
                             return `
-                            <div class="service-entry" style="border-left: 4px solid ${serviceColor};">
+                            <div class="service-entry" id="service-${vehicle.id}-${index}" style="border-left: 4px solid ${serviceColor};">
                                 <div class="service-header">
                                     <div class="service-type" style="color: ${serviceColor};">${service.services.join(', ')}</div>
                                     <div class="service-cost">$${service.cost.toFixed(2)}</div>
@@ -2336,21 +2663,21 @@
                                                 <span style="color: #F8CC4E; font-weight: 700;">$${hourlyRate.toFixed(2)}/hr</span>
                                             </div>
                                         ` : ''}
-                                        ${hasBreakdown ? `
-                                            <button 
-                                                onclick="toggleBreakdown('breakdown-${index}')" 
-                                                style="width: 100%; margin-top: 8px; padding: 6px; background: white; border: 1px solid #68C6E6; border-radius: 6px; color: #105495; font-size: 12px; font-weight: 600; cursor: pointer;">
-                                                📋 View Product Breakdown
+                                        <button 
+                                                onclick="toggleBreakdown('breakdown-${vehicle.id}-${index}')" 
+                                                style="width: 100%; margin-top: 8px; padding: 8px; background: #68C6E6; border: none; border-radius: 6px; color: #142B55; font-size: 13px; font-weight: 600; cursor: pointer;">
+                                                📋 Product Breakdown
                                             </button>
-                                            <div id="breakdown-${index}" style="display: none; margin-top: 8px; padding: 8px; background: white; border-radius: 6px; font-size: 12px;">
-                                                ${service.costBreakdown.map(item => `
-                                                    <div style="display: flex; justify-content: space-between; padding: 4px 0; color: #2A466F;">
-                                                        <span>• ${item.product}: ${item.used}</span>
-                                                        <span style="font-weight: 600;">$${item.cost.toFixed(2)}</span>
-                                                    </div>
-                                                `).join('')}
+                                            <div id="breakdown-${vehicle.id}-${index}" style="display: none; margin-top: 8px; padding: 12px; background: #F8F9FD; border-radius: 6px; font-size: 13px;">
+                                                ${(() => {
+                                                    const breakdown = getProductBreakdown(service.services, determineVehicleSize(vehicle), service.performedSteps);
+                                                    return breakdown.map(item => `
+                                                        <div style="padding: 4px 0; color: #2A466F;">
+                                                            • ${item.product}: ${item.amount}
+                                                        </div>
+                                                    `).join('');
+                                                })()}
                                             </div>
-                                        ` : ''}
                                     </div>
                                 ` : ''}
                                 ${service.notes ? `<div class="service-notes">${service.notes}</div>` : ''}
@@ -2451,11 +2778,18 @@
 
         function showEditService(vehicleId, serviceIndex) {
             currentVehicleId = vehicleId;
-            currentServiceIndex = serviceIndex;
             
             const client = clients.find(c => c.id === currentClientId);
             const vehicle = client.vehicles.find(v => v.id === vehicleId);
-            const service = vehicle.services[serviceIndex];
+            
+            // Get the sorted services to find the right one
+            const sortedServices = [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date));
+            const service = sortedServices[serviceIndex];
+            
+            // Find the ACTUAL index in the unsorted array using date + cost as unique identifier
+            currentServiceIndex = vehicle.services.findIndex(s => 
+                s.date === service.date && s.cost === service.cost && s.services.join(',') === service.services.join(',')
+            );
             
             // Set checkboxes
             document.getElementById('edit-service-basic').checked = service.services.includes('Basic Wash');
@@ -2469,6 +2803,19 @@
             document.getElementById('editServiceDuration').value = service.duration || '';
             document.getElementById('editServiceCost').value = service.cost;
             document.getElementById('editServiceNotes').value = service.notes || '';
+            
+            // Show steps UI
+            updateEditServiceStepsDisplay();
+            
+            // Pre-check the steps that were performed
+            if (service.performedSteps) {
+                setTimeout(() => {
+                    service.performedSteps.forEach(stepId => {
+                        const checkbox = document.querySelector(`.edit-service-step[value="${stepId}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }, 100);
+            }
             
             showScreen('editService');
         }
@@ -2512,12 +2859,20 @@
                 productCost: productCost,
                 costBreakdown: breakdown,
                 profit: parseFloat(cost) - productCost,
-                notes: notes
+                notes: notes,
+                performedSteps: getEditPerformedSteps(),
+                customSteps: vehicle.services[currentServiceIndex].customSteps || []
             };
 
             saveData();
-            alert('Service updated!');
+            
+            // Refresh the client profile to show updated service
             viewClientProfile(currentClientId);
+            
+            // Show success message after refresh
+            setTimeout(() => {
+                alert('Service updated!');
+            }, 100);
         }
 
         function deleteService(vehicleId, serviceIndex) {
@@ -2525,9 +2880,23 @@
             
             const client = clients.find(c => c.id === currentClientId);
             const vehicle = client.vehicles.find(v => v.id === vehicleId);
-            vehicle.services.splice(serviceIndex, 1);
-            saveData();
-            viewClientProfile(currentClientId);
+            
+            // Get the sorted services to find the right one
+            const sortedServices = [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date));
+            const serviceToDelete = sortedServices[serviceIndex];
+            
+            // Find the ACTUAL index in the unsorted array
+            const actualIndex = vehicle.services.findIndex(s => 
+                s.date === serviceToDelete.date && 
+                s.cost === serviceToDelete.cost && 
+                s.services.join(',') === serviceToDelete.services.join(',')
+            );
+            
+            if (actualIndex !== -1) {
+                vehicle.services.splice(actualIndex, 1);
+                saveData();
+                viewClientProfile(currentClientId);
+            }
         }
 
         function deleteClient() {
@@ -3121,6 +3490,650 @@
             if (services.includes('Wash and Shine')) return '#8B5CF6'; // Purple
             if (services.includes('Rinseless Wash')) return '#06B6D4'; // Cyan
             return '#3B82F6'; // Blue for Basic Wash
+        }
+
+
+        function clearAllReminders() {
+            clients.forEach(client => {
+                client.vehicles.forEach(vehicle => {
+                    const reminderKey = `${client.id}-${vehicle.id}`;
+                    if (!clearedReminders.includes(reminderKey)) {
+                        clearedReminders.push(reminderKey);
+                    }
+                });
+            });
+            localStorage.setItem('carwash_cleared_reminders', JSON.stringify(clearedReminders));
+            checkMainMenuReminders();
+        }
+
+
+        // Get last services for a vehicle
+        function getLastServices(services) {
+            if (!services || services.length === 0) return [];
+            
+            const serviceTypes = {
+                'Basic Wash': { last: null, daysAgo: Infinity },
+                'Wash and Shine': { last: null, daysAgo: Infinity },
+                'Wax': { last: null, daysAgo: Infinity },
+                'Full Detail': { last: null, daysAgo: Infinity }
+            };
+            
+            const now = new Date();
+            
+            services.forEach((service, idx) => {
+                const serviceDate = new Date(service.date);
+                const daysAgo = Math.floor((now - serviceDate) / (1000 * 60 * 60 * 24));
+                
+                service.services.forEach(serviceName => {
+                    if (serviceTypes[serviceName] && daysAgo < serviceTypes[serviceName].daysAgo) {
+                        serviceTypes[serviceName] = {
+                            last: service,
+                            daysAgo: daysAgo,
+                            date: formatDate(service.date),
+                            serviceIndex: idx
+                        };
+                    }
+                });
+            });
+            
+            return Object.entries(serviceTypes)
+                .filter(([_, data]) => data.last !== null)
+                .map(([type, data]) => ({
+                    type: type,
+                    daysAgo: data.daysAgo,
+                    date: data.date,
+                    serviceIndex: data.serviceIndex
+                }))
+                .sort((a, b) => a.daysAgo - b.daysAgo);
+        }
+
+        // Scroll to a specific service and highlight it
+        function scrollToService(vehicleId, serviceIndex) {
+            const element = document.getElementById(`service-${vehicleId}-${serviceIndex}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                element.classList.add('highlighted');
+                setTimeout(() => element.classList.remove('highlighted'), 1000);
+            }
+        }
+
+
+        // Generate product breakdown WITHOUT costs
+        function getProductBreakdown(services, vehicleSize, performedSteps) {
+            const breakdown = [];
+            const sizeMultiplier = {
+                'car': 1,
+                'small_suv': 1.2,
+                'large_suv': 1.5,
+                'truck': 1.8
+            }[vehicleSize] || 1;
+            
+            // If no steps tracked, use old logic
+            if (!performedSteps) {
+                services.forEach(serviceName => {
+                    if (serviceName === 'Basic Wash' || serviceName === 'Wash and Shine' || serviceName === 'Wax' || serviceName === 'Full Detail') {
+                        breakdown.push({ product: 'Magic Shampoo', amount: '2.5 oz' });
+                        breakdown.push({ product: 'Brake Buster', amount: (9 * 0.20 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tech 582 Glass', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
+                    }
+                    if (serviceName === 'Wash and Shine') {
+                        breakdown.push({ product: 'S0.03 Ceramic', amount: '0.75 oz' });
+                    }
+                    if (serviceName === 'Wax' || serviceName === 'Full Detail') {
+                        breakdown.push({ product: 'Iron Remover', amount: (4 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'IPA Wipe', amount: (8 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Collinite 845 Wax', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
+                    }
+                    if (serviceName === 'Full Detail') {
+                        breakdown.push({ product: '3D One Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Jescar Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                    }
+                    if (serviceName === 'Rinseless Wash') {
+                        breakdown.push({ product: 'P&S Absolute Rinseless', amount: '0.5 oz' });
+                        breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tech 582 Glass', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
+                    }
+                });
+            } else {
+                // Use performed steps
+                if (performedSteps.includes('foam_wash')) {
+                    breakdown.push({ product: 'Magic Shampoo', amount: '2.5 oz' });
+                    breakdown.push({ product: 'Brake Buster', amount: (9 * 0.20 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('interior_wipe')) {
+                    breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
+                    breakdown.push({ product: 'Tech 582', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('tire_dressing')) {
+                    breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
+                }
+                if (performedSteps.includes('ceramic_application')) {
+                    breakdown.push({ product: 'S0.03 Ceramic', amount: '0.75 oz' });
+                }
+                if (performedSteps.includes('iron_remover')) {
+                    breakdown.push({ product: 'Iron Remover', amount: (4 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('ipa_wipe')) {
+                    breakdown.push({ product: 'IPA', amount: (8 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('wax_collinite')) {
+                    breakdown.push({ product: 'Collinite 845', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('compound_3d')) {
+                    breakdown.push({ product: '3D One Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('polish_jescar')) {
+                    breakdown.push({ product: 'Jescar Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('rinseless_wash')) {
+                    breakdown.push({ product: 'P&S Absolute', amount: '0.5 oz' });
+                }
+            }
+            
+            // Remove duplicates
+            const unique = [];
+            const seen = new Set();
+            breakdown.forEach(item => {
+                if (!seen.has(item.product)) {
+                    seen.add(item.product);
+                    unique.push(item);
+                }
+            });
+            
+            return unique;
+        }
+
+
+        // SERVICE STEPS TRACKING FUNCTIONS
+        
+        function updateServiceStepsDisplay() {
+            const stepsSection = document.getElementById('serviceStepsSection');
+            const stepsContainer = document.getElementById('serviceStepsContainer');
+            
+            if (!stepsSection || !stepsContainer) return;
+            
+            // Determine which services are selected
+            const selectedServices = [];
+            if (document.getElementById('service-basic')?.checked) selectedServices.push('Basic Wash');
+            if (document.getElementById('service-shine')?.checked) selectedServices.push('Wash and Shine');
+            if (document.getElementById('service-wax')?.checked) selectedServices.push('Wax');
+            if (document.getElementById('service-detail')?.checked) selectedServices.push('Full Detail');
+            if (document.getElementById('service-rinseless')?.checked) selectedServices.push('Rinseless Wash');
+            
+            if (selectedServices.length === 0) {
+                stepsSection.classList.add('hidden');
+                return;
+            }
+            
+            // Show steps for the most comprehensive service selected
+            let serviceType = 'Basic Wash';
+            if (selectedServices.includes('Full Detail')) serviceType = 'Full Detail';
+            else if (selectedServices.includes('Wax')) serviceType = 'Wax';
+            else if (selectedServices.includes('Wash and Shine')) serviceType = 'Wash and Shine';
+            else if (selectedServices.includes('Rinseless Wash')) serviceType = 'Rinseless Wash';
+            
+            const steps = SERVICE_STEPS[serviceType];
+            if (!steps) {
+                stepsSection.classList.add('hidden');
+                return;
+            }
+            
+            stepsSection.classList.remove('hidden');
+            
+            let html = '';
+            Object.entries(steps).forEach(([categoryName, categorySteps]) => {
+                html += '<div class="step-category">';
+                html += '<div class="step-category-title">' + categoryName + '</div>';
+                html += '<div class="checkbox-group">';
+                
+                categorySteps.forEach(step => {
+                    html += '<label class="checkbox-label">';
+                    html += '<input type="checkbox" class="service-step" value="' + step.id + '" checked>';
+                    html += step.label;
+                    html += '</label>';
+                });
+                
+                html += '</div></div>';
+            });
+            
+            html += '<div class="step-category">';
+            html += '<div class="step-category-title">Custom Steps</div>';
+            html += '<div id="customStepsContainer"></div>';
+            html += '<div class="custom-step-input">';
+            html += '<input type="text" id="newCustomStep" placeholder="Add custom step...">';
+            html += '<button type="button" onclick="addCustomStep()">Add</button>';
+            html += '</div></div>';
+            
+            stepsContainer.innerHTML = html;
+        }
+        
+        function addCustomStep() {
+            const input = document.getElementById('newCustomStep');
+            if (!input) return;
+            
+            const value = input.value.trim();
+            if (!value) return;
+            
+            customSteps.push(value);
+            input.value = '';
+            renderCustomSteps();
+        }
+        
+        function renderCustomSteps() {
+            const container = document.getElementById('customStepsContainer');
+            if (!container) return;
+            
+            container.innerHTML = customSteps.map((step, index) => 
+                '<div style="display: flex; gap: 8px; margin-bottom: 8px;">' +
+                '<input type="text" value="' + step + '" readonly style="flex: 1; padding: 8px; border: 2px solid #e2e8f0; border-radius: 6px; background: #F8F9FD;">' +
+                '<button type="button" onclick="removeCustomStep(' + index + ')" style="background: #EF4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Remove</button>' +
+                '</div>'
+            ).join('');
+        }
+        
+        function removeCustomStep(index) {
+            customSteps.splice(index, 1);
+            renderCustomSteps();
+        }
+        
+        function getPerformedSteps() {
+            const checkboxes = document.querySelectorAll('.service-step:checked');
+            return Array.from(checkboxes).map(cb => cb.value);
+        }
+
+
+        function updateDashboard() {
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            const currentYear = now.getFullYear();
+            
+            let monthIncome = 0;
+            let ytdIncome = 0;
+            let allTimeIncome = 0;
+            let totalJobs = 0;
+            let totalHours = 0;
+            
+            clients.forEach(client => {
+                if (client.isFamily) return; // Exclude family
+                
+                client.vehicles.forEach(vehicle => {
+                    vehicle.services.forEach(service => {
+                        const serviceDate = new Date(service.date);
+                        
+                        allTimeIncome += service.cost;
+                        totalJobs++;
+                        if (service.duration) totalHours += parseFloat(service.duration);
+                        
+                        if (serviceDate.getFullYear() === currentYear) {
+                            ytdIncome += service.cost;
+                            
+                            if (serviceDate.getMonth() === currentMonth) {
+                                monthIncome += service.cost;
+                            }
+                        }
+                    });
+                });
+            });
+            
+            document.getElementById('dashThisMonth').textContent = '$' + monthIncome.toFixed(2);
+            document.getElementById('dashYTD').textContent = '$' + ytdIncome.toFixed(2);
+            document.getElementById('dashAllTime').textContent = '$' + allTimeIncome.toFixed(2);
+            document.getElementById('dashTotalJobs').textContent = totalJobs;
+            document.getElementById('dashAvgJob').textContent = totalJobs > 0 ? '$' + (allTimeIncome / totalJobs).toFixed(0) : '$0';
+            document.getElementById('dashHourlyRate').textContent = totalHours > 0 ? '$' + (allTimeIncome / totalHours).toFixed(0) : '$0';
+            document.getElementById('dashTotalHours').textContent = totalHours.toFixed(1);
+            
+            // Show reminders on dashboard
+            const reminderContainer = document.getElementById('dashboardReminders');
+            if (reminderContainer) {
+                const mainReminders = document.getElementById('mainServiceReminders').innerHTML;
+                reminderContainer.innerHTML = mainReminders || '<p style="color: #64748b; text-align: center; font-style: italic;">No reminders</p>';
+            }
+        }
+
+
+        function toggleStatsDropdown() {
+            const dropdown = document.getElementById('statsDropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+
+        function showMonthDetail() {
+            const now = new Date();
+            const month = now.getMonth();
+            const year = now.getFullYear();
+            calculatePeriodStats(month, year, 'month');
+        }
+        
+        function showYTDDetail() {
+            const now = new Date();
+            const year = now.getFullYear();
+            calculatePeriodStats(null, year, 'ytd');
+        }
+        
+        function showYearDetail() {
+            const now = new Date();
+            const year = now.getFullYear();
+            calculatePeriodStats(null, year, 'year');
+        }
+        
+        function calculatePeriodStats(month, year, period) {
+            const now = new Date();
+            let income = 0;
+            let jobs = 0;
+            let productCost = 0;
+            let hours = 0;
+            
+            clients.forEach(client => {
+                if (client.isFamily) return;
+                
+                client.vehicles.forEach(vehicle => {
+                    vehicle.services.forEach(service => {
+                        const serviceDate = new Date(service.date);
+                        let include = false;
+                        
+                        if (period === 'month' && serviceDate.getMonth() === month && serviceDate.getFullYear() === year) {
+                            include = true;
+                        } else if (period === 'ytd' && serviceDate.getFullYear() === year) {
+                            include = true;
+                        } else if (period === 'year' && serviceDate.getFullYear() === year) {
+                            include = true;
+                        }
+                        
+                        if (include) {
+                            income += service.cost;
+                            jobs++;
+                            productCost += (service.productCost || 0);
+                            if (service.duration) hours += parseFloat(service.duration);
+                        }
+                    });
+                });
+            });
+            
+            const profit = income - productCost;
+            const margin = income > 0 ? (profit / income * 100) : 0;
+            const avgPerJob = jobs > 0 ? income / jobs : 0;
+            const hourlyRate = hours > 0 ? profit / hours : 0;
+            
+            const periodName = period === 'month' ? new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) :
+                              period === 'ytd' ? 'Year to Date ' + year :
+                              'Year ' + year;
+            
+            alert(periodName + '\n\n' +
+                  'Total Income: $' + income.toFixed(2) + '\n' +
+                  'Product Cost: $' + productCost.toFixed(2) + '\n' +
+                  'Net Profit: $' + profit.toFixed(2) + '\n' +
+                  'Profit Margin: ' + margin.toFixed(1) + '%\n' +
+                  'Total Jobs: ' + jobs + '\n' +
+                  'Avg Per Job: $' + avgPerJob.toFixed(2) + '\n' +
+                  'Total Hours: ' + hours.toFixed(1) + '\n' +
+                  'Hourly Rate: $' + hourlyRate.toFixed(2));
+        }
+
+
+        function goToServiceLogForClient() {
+            // Save the current client ID so we can pre-select them in Quick Log
+            const client = clients.find(c => c.id === currentClientId);
+            if (!client) return;
+            
+            // Go to Quick Log screen
+            showScreen('quickLog');
+            
+            // Pre-select this client in the list
+            setTimeout(() => {
+                selectClientForService(currentClientId);
+            }, 100);
+        }
+
+
+        // Get reminders for a specific client
+        function getClientReminders(clientId) {
+            const client = clients.find(c => c.id === clientId);
+            if (!client || client.isFamily) return [];
+            
+            const now = new Date();
+            const reminders = [];
+            
+            client.vehicles.forEach(vehicle => {
+                if (vehicle.isInactive) return;
+                if (vehicle.services.length === 0) return;
+                
+                const sortedServices = [...vehicle.services].sort((a, b) => 
+                    new Date(b.date) - new Date(a.date)
+                );
+                
+                const lastService = sortedServices[0];
+                const lastServiceDate = new Date(lastService.date + 'T00:00:00');
+                const daysSince = Math.floor((now - lastServiceDate) / (1000 * 60 * 60 * 24));
+                
+                const reminderKey = `${client.id}-${vehicle.id}`;
+                if (clearedReminders.includes(reminderKey)) return;
+                
+                const serviceType = lastService.services[0];
+                let threshold = 0;
+                
+                if (serviceType === 'Basic Wash' || serviceType === 'Rinseless Wash') threshold = 45;
+                else if (serviceType === 'Wash and Shine') threshold = 90;
+                else if (serviceType === 'Wax') threshold = 150;
+                else if (serviceType === 'Full Detail') threshold = 365;
+                
+                if (daysSince >= threshold) {
+                    reminders.push({
+                        vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+                        vehicleId: vehicle.id,
+                        message: `Last ${serviceType}: ${daysSince} days ago`,
+                        days: daysSince,
+                        serviceType: serviceType
+                    });
+                }
+            });
+            
+            return reminders;
+        }
+        
+        // Clear reminder for specific vehicle
+        function clearClientReminder(vehicleId) {
+            const reminderKey = `${currentClientId}-${vehicleId}`;
+            if (!clearedReminders.includes(reminderKey)) {
+                clearedReminders.push(reminderKey);
+            }
+            localStorage.setItem('carwash_cleared_reminders', JSON.stringify(clearedReminders));
+            viewClientProfile(currentClientId);
+            checkMainMenuReminders();
+        }
+        
+        // Snooze reminder for specific vehicle (clear for 7 days)
+        function snoozeClientReminder(vehicleId) {
+            clearClientReminder(vehicleId);
+            alert('Reminder snoozed! Will reappear when you restart the app.');
+        }
+
+
+        // Toggle stats dropdown
+        function toggleStatsDropdown() {
+            const dropdown = document.getElementById('statsDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+        
+        // Calculate period stats
+        function calculatePeriodStats(startDate, endDate, title) {
+            let income = 0;
+            let productCost = 0;
+            let jobs = 0;
+            let hours = 0;
+            const servicesList = [];
+            
+            clients.forEach(client => {
+                if (client.isFamily) return;
+                
+                client.vehicles.forEach(vehicle => {
+                    vehicle.services.forEach(service => {
+                        const serviceDate = new Date(service.date);
+                        
+                        if (serviceDate >= startDate && serviceDate <= endDate) {
+                            income += service.cost;
+                            productCost += (service.productCost || 0);
+                            jobs++;
+                            if (service.duration) hours += parseFloat(service.duration);
+                            
+                            servicesList.push({
+                                client: client.name,
+                                vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+                                service: service.services.join(', '),
+                                cost: service.cost,
+                                date: service.date
+                            });
+                        }
+                    });
+                });
+            });
+            
+            const profit = income - productCost;
+            const margin = income > 0 ? (profit / income * 100) : 0;
+            const avgJob = jobs > 0 ? (income / jobs) : 0;
+            const hourlyRate = hours > 0 ? (profit / hours) : 0;
+            
+            return {
+                title,
+                income,
+                productCost,
+                profit,
+                margin,
+                jobs,
+                avgJob,
+                hours,
+                hourlyRate,
+                services: servicesList.sort((a,b) => new Date(b.date) - new Date(a.date))
+            };
+        }
+        
+        // Render detail view
+        function renderDetailView(stats, containerId) {
+            const container = document.getElementById(containerId);
+            
+            const html = `
+                <div style="background: #F8F9FD; padding: 16px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #ADCEE7;">
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Total Income:</div>
+                        <div style="color: #142B55; font-weight: 700; font-size: 18px;">$${stats.income.toFixed(2)}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Product Cost:</div>
+                        <div style="color: #DC2626; font-weight: 600;">-$${stats.productCost.toFixed(2)}</div>
+                    </div>
+                    <div style="border-top: 2px solid #ADCEE7; margin: 8px 0;"></div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #142B55; font-weight: 700;">Net Profit:</div>
+                        <div style="color: #10B981; font-weight: 700; font-size: 18px;">$${stats.profit.toFixed(2)}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Profit Margin:</div>
+                        <div style="color: #142B55; font-weight: 600;">${stats.margin.toFixed(1)}%</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Total Jobs:</div>
+                        <div style="color: #142B55; font-weight: 600;">${stats.jobs}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Avg per Job:</div>
+                        <div style="color: #142B55; font-weight: 600;">$${stats.avgJob.toFixed(2)}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Total Hours:</div>
+                        <div style="color: #142B55; font-weight: 600;">${stats.hours.toFixed(1)}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <div style="color: #64748b;">Hourly Rate:</div>
+                        <div style="color: #142B55; font-weight: 600;">$${stats.hourlyRate.toFixed(2)}</div>
+                    </div>
+                </div>
+                
+                <h3 style="color: #142B55; margin-bottom: 12px;">Services:</h3>
+                ${stats.services.length > 0 ? stats.services.map(s => `
+                    <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px; border: 2px solid #ADCEE7;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <div style="font-weight: 600; color: #142B55;">${s.client}</div>
+                            <div style="color: #F8CC4E; font-weight: 700;">$${s.cost.toFixed(2)}</div>
+                        </div>
+                        <div style="color: #64748b; font-size: 14px;">${s.vehicle}</div>
+                        <div style="color: #2A466F; font-size: 14px;">${s.service} • ${formatDate(s.date)}</div>
+                    </div>
+                `).join('') : '<div style="color: #64748b; text-align: center; padding: 20px;">No services in this period</div>'}
+            `;
+            
+            container.innerHTML = html;
+        }
+        
+        // Show month detail
+        function showMonthDetail() {
+            toggleStatsDropdown();
+            
+            const now = new Date();
+            const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+            
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                              'July', 'August', 'September', 'October', 'November', 'December'];
+            const title = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+            
+            document.getElementById('monthDetailTitle').textContent = title + ' Details';
+            const stats = calculatePeriodStats(startOfMonth, endOfMonth, title);
+            renderDetailView(stats, 'monthDetailContent');
+            showScreen('monthDetail');
+        }
+        
+        // Show YTD detail
+        function showYTDDetail() {
+            toggleStatsDropdown();
+            
+            const now = new Date();
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+            const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+            
+            const stats = calculatePeriodStats(startOfYear, endOfToday, 'Year to Date');
+            renderDetailView(stats, 'ytdDetailContent');
+            showScreen('ytdDetail');
+        }
+        
+
+        // Show previous year detail
+        function showPreviousYearDetail() {
+            toggleStatsDropdown();
+            
+            const now = new Date();
+            const previousYear = now.getFullYear() - 1;
+            const startOfYear = new Date(previousYear, 0, 1);
+            const endOfYear = new Date(previousYear, 11, 31, 23, 59, 59);
+            
+            document.getElementById('yearDetailTitle').textContent = previousYear + ' Summary';
+            const stats = calculatePeriodStats(startOfYear, endOfYear, previousYear + ' Summary');
+            renderDetailView(stats, 'yearDetailContent');
+            showScreen('yearDetail');
+        }
+
+        // Show full year detail
+        function showYearDetail() {
+            toggleStatsDropdown();
+            
+            const now = new Date();
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+            const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
+            
+            document.getElementById('yearDetailTitle').textContent = now.getFullYear() + ' Summary';
+            const stats = calculatePeriodStats(startOfYear, endOfYear, now.getFullYear() + ' Summary');
+            renderDetailView(stats, 'yearDetailContent');
+            showScreen('yearDetail');
+        }
+
+
+        function cancelRepeatService() {
+            pendingRepeatService = null;
+            showScreen('quickLog');
         }
 
         init();
