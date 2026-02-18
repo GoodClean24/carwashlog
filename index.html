@@ -1493,7 +1493,7 @@
                     </div>
                     ${reminders.slice(0, 3).map(r => `
                         <div style="background: #FEF3C7; padding: 8px; border-radius: 6px; margin-bottom: 4px; border: 1px solid #F59E0B; position: relative;">
-                            <button onclick="event.stopPropagation(); clearSingleReminder('${r.clientId}', '${r.vehicle}'); event.preventDefault();" style="position: absolute; top: 4px; right: 4px; background: #DC2626; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 14px;">×</button>
+                            <button onclick="clearSingleReminder('${r.clientId}', '${r.vehicle}'); return false;" style="position: absolute; top: 4px; right: 4px; background: #DC2626; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 14px; z-index: 10;">×</button>
                             <div onclick="viewClientProfile('${r.clientId}')" style="cursor: pointer; padding-right: 30px;">
                                 <div style="font-weight: 600; color: #92400E;">${r.client}</div>
                                 <div style="color: #78350F; font-size: 13px;">${r.vehicle}</div>
@@ -4505,7 +4505,7 @@
         // Clear a single reminder from main menu only (X button)
         function clearSingleReminder(clientId, vehicleName) {
             const client = clients.find(c => c.id === clientId);
-            if (!client) return;
+            if (!client) return false;
             
             // Find the vehicle by name
             const vehicle = client.vehicles.find(v => 
@@ -4514,12 +4514,16 @@
             
             if (vehicle) {
                 const reminderKey = `${clientId}-${vehicle.id}`;
+                
                 if (!mainMenuHiddenReminders.includes(reminderKey)) {
                     mainMenuHiddenReminders.push(reminderKey);
                 }
+                
                 localStorage.setItem('carwash_main_menu_hidden', JSON.stringify(mainMenuHiddenReminders));
                 checkMainMenuReminders();
             }
+            
+            return false; // Prevent event bubbling
         }
 
         init();
