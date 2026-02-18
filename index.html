@@ -683,25 +683,31 @@
             
             <div class="checkbox-grid" id="editServiceCheckboxes">
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-basic">
+                    <input type="checkbox" id="edit-service-basic" onchange="updateEditServiceStepsDisplay()">
                     <span>Basic Wash</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-shine">
+                    <input type="checkbox" id="edit-service-shine" onchange="updateEditServiceStepsDisplay()">
                     <span>Wash and Shine</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-wax">
+                    <input type="checkbox" id="edit-service-wax" onchange="updateEditServiceStepsDisplay()">
                     <span>Wax</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-detail">
+                    <input type="checkbox" id="edit-service-detail" onchange="updateEditServiceStepsDisplay()">
                     <span>Full Detail</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-rinseless">
+                    <input type="checkbox" id="edit-service-rinseless" onchange="updateEditServiceStepsDisplay()">
                     <span>Rinseless Wash</span>
                 </label>
+            </div>
+
+            <!-- Service Steps Section -->
+            <div id="editServiceStepsSection" class="hidden" style="margin-top: 16px; margin-bottom: 16px;">
+                <h3 style="color: #142B55; margin-bottom: 12px; font-size: 16px;">Service Steps</h3>
+                <div id="editServiceStepsContainer"></div>
             </div>
 
             <div class="input-group">
@@ -2818,18 +2824,28 @@
             document.getElementById('editServiceCost').value = service.cost;
             document.getElementById('editServiceNotes').value = service.notes || '';
             
-            // Show steps UI
+            // Store the performed steps for later
+            window.currentEditPerformedSteps = service.performedSteps || null;
+            
+            // Show steps UI based on selected service types
             updateEditServiceStepsDisplay();
             
-            // Pre-check the steps that were performed
-            if (service.performedSteps) {
-                setTimeout(() => {
-                    service.performedSteps.forEach(stepId => {
+            // After steps are displayed, set the checkmarks
+            setTimeout(() => {
+                // First uncheck all
+                document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = false);
+                
+                // Then check only the performed steps
+                if (window.currentEditPerformedSteps && window.currentEditPerformedSteps.length > 0) {
+                    window.currentEditPerformedSteps.forEach(stepId => {
                         const checkbox = document.querySelector(`.edit-service-step[value="${stepId}"]`);
                         if (checkbox) checkbox.checked = true;
                     });
-                }, 100);
-            }
+                } else {
+                    // No steps tracked - this is an old service, check all by default
+                    document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = true);
+                }
+            }, 100);
             
             showScreen('editService');
         }
@@ -3722,6 +3738,17 @@
             html += '</div></div>';
             
             stepsContainer.innerHTML = html;
+            
+            // Restore the performed steps checkmarks after updating
+            if (window.currentEditPerformedSteps) {
+                setTimeout(() => {
+                    document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = false);
+                    window.currentEditPerformedSteps.forEach(stepId => {
+                        const checkbox = document.querySelector(`.edit-service-step[value="${stepId}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }, 50);
+            }
         }
         
         function addCustomStep() {
@@ -4201,6 +4228,17 @@
             });
             
             stepsContainer.innerHTML = html;
+            
+            // Restore the performed steps checkmarks after updating
+            if (window.currentEditPerformedSteps) {
+                setTimeout(() => {
+                    document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = false);
+                    window.currentEditPerformedSteps.forEach(stepId => {
+                        const checkbox = document.querySelector(`.edit-service-step[value="${stepId}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }, 50);
+            }
         }
         
         // Get performed steps from edit form
