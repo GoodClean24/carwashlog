@@ -1,0 +1,2403 @@
+{
+  "clients": [
+    {
+      "id": "1771114796628",
+      "name": "Nicole",
+      "vehicles": [
+        {
+          "id": "1771114796628-v1",
+          "year": "2025",
+          "make": "Acura",
+          "model": "SUV",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-11-15",
+              "duration": "2",
+              "cost": 35,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 34.06804733727811,
+              "notes": "",
+              "performedSteps": [
+                "wheels_tires",
+                "foam_wash",
+                "windows",
+                "interior_wipe",
+                "vacuum",
+                "tire_dressing",
+                "ceramic_application"
+              ],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-07-06",
+              "duration": "2",
+              "cost": 20,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 17.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-13",
+              "duration": "2",
+              "cost": 20,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 17.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-09-06",
+              "duration": "2",
+              "cost": 20,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 17.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Rinseless Wash"
+              ],
+              "date": "2026-01-03",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 1.991390625,
+              "costBreakdown": [
+                {
+                  "product": "P&S Absolute",
+                  "used": "0.50 oz",
+                  "cost": 0.34375
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 13.008609375,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Full Detail"
+              ],
+              "date": "2025-09-13",
+              "duration": "6",
+              "cost": 130,
+              "productCost": 9.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.0 oz",
+                  "cost": 1.25
+                },
+                {
+                  "product": "3D One Polish",
+                  "used": "2.0 oz",
+                  "cost": 3.75
+                },
+                {
+                  "product": "Jescar Polish",
+                  "used": "2.0 oz",
+                  "cost": 4.25
+                }
+              ],
+              "profit": 120.75,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-10-11",
+              "duration": "1.75",
+              "cost": 20,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 19.068047337278106,
+              "notes": "",
+              "performedSteps": [
+                "wheels_tires",
+                "foam_wash",
+                "windows",
+                "interior_wipe",
+                "vacuum",
+                "tire_dressing",
+                "ceramic_application"
+              ],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-08-09",
+              "duration": "1.5",
+              "cost": 20,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 17.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-06-07",
+              "duration": "2",
+              "cost": 20,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 17.8838046875,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771114840132",
+      "name": "Deidre",
+      "vehicles": [
+        {
+          "id": "1771114840132-v1",
+          "year": "2021",
+          "make": "Acura",
+          "model": "Car",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-09-07",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-01-17",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-26",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": "",
+              "performedSteps": [
+                "wheels_tires",
+                "foam_wash",
+                "windows",
+                "interior_wipe",
+                "vacuum",
+                "tire_dressing"
+              ],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-11-16",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": "",
+              "performedSteps": [
+                "wheels_tires",
+                "foam_wash",
+                "windows",
+                "interior_wipe",
+                "vacuum",
+                "tire_dressing"
+              ],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-10-11",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 14.068047337278106,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-08-09",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-07-05",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-05-31",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771114866143",
+      "name": "Phil neighbor",
+      "vehicles": [
+        {
+          "id": "1771114866144-v1",
+          "year": "2020",
+          "make": "Chevy",
+          "model": "Colorado",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-02-08",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 3.1281203125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "3.24 oz",
+                  "cost": 0.8859375
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.61 oz",
+                  "cost": 0.14319843750000003
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "4.56 oz",
+                  "cost": 1.2476953124999999
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 11.8718796875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2026-01-10",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 1.6775147928994083,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "1.35 oz",
+                  "cost": 1.6775147928994083
+                }
+              ],
+              "profit": 23.32248520710059,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-11-15",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 1.6775147928994083,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "1.35 oz",
+                  "cost": 1.6775147928994083
+                }
+              ],
+              "profit": 13.322485207100591,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wax"
+              ],
+              "date": "2025-07-05",
+              "duration": "5",
+              "cost": 130,
+              "productCost": 2.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.8 oz",
+                  "cost": 2.25
+                }
+              ],
+              "profit": 127.75,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": "1771114890340",
+          "year": "2021",
+          "make": "Toyota",
+          "model": "Camry",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-01-10",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-10-12",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 14.068047337278106,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-02-08",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 0,
+              "costBreakdown": [],
+              "profit": 15,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": "1771120816211",
+          "year": "2018",
+          "make": "Toyota",
+          "model": "Tacoma",
+          "color": "Grey",
+          "services": [
+            {
+              "services": [
+                "Wax"
+              ],
+              "date": "2025-10-11",
+              "duration": "2",
+              "cost": 50,
+              "productCost": 2.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.8 oz",
+                  "cost": 2.25
+                }
+              ],
+              "profit": 47.75,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771114929926",
+      "name": "Lorraine",
+      "vehicles": [
+        {
+          "id": "1771114929926-v1",
+          "year": "2015",
+          "make": "BMW",
+          "model": "480i",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-02-07",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Rinseless Wash"
+              ],
+              "date": "2025-08-09",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 1.991390625,
+              "costBreakdown": [
+                {
+                  "product": "P&S Absolute",
+                  "used": "0.50 oz",
+                  "cost": 0.34375
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 13.008609375,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-12-06",
+              "duration": "1.5",
+              "cost": 20,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 19.068047337278106,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771114956094",
+      "name": "Dave",
+      "vehicles": [
+        {
+          "id": "1771114956094-v1",
+          "year": "2009",
+          "make": "GMC",
+          "model": "Truck",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-10-12",
+              "duration": "1.5",
+              "cost": 40,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 39.06804733727811,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Full Detail"
+              ],
+              "date": "2025-05-17",
+              "duration": "8",
+              "cost": 75,
+              "productCost": 9.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.0 oz",
+                  "cost": 1.25
+                },
+                {
+                  "product": "3D One Polish",
+                  "used": "2.0 oz",
+                  "cost": 3.75
+                },
+                {
+                  "product": "Jescar Polish",
+                  "used": "2.0 oz",
+                  "cost": 4.25
+                }
+              ],
+              "profit": 65.75,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Rinseless Wash"
+              ],
+              "date": "2025-07-05",
+              "duration": "1",
+              "cost": 40,
+              "productCost": 1.991390625,
+              "costBreakdown": [
+                {
+                  "product": "P&S Absolute",
+                  "used": "0.50 oz",
+                  "cost": 0.34375
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 38.008609375,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771114992566",
+      "name": "Yvonne",
+      "vehicles": [
+        {
+          "id": "1771114992566-v1",
+          "year": "2022",
+          "make": "Honda",
+          "model": "Accord",
+          "color": "Silver",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-09-13",
+              "duration": "2",
+              "cost": 30,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": 29.068047337278106,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-06-07",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771115021032",
+      "name": "Jesse",
+      "vehicles": [
+        {
+          "id": "1771116534040",
+          "year": "2021",
+          "make": "Chevy",
+          "model": "Truck",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-09-13",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-06-07",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.8838046875,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771115068458",
+      "name": "Zefer",
+      "vehicles": [
+        {
+          "id": "1771115068458-v1",
+          "year": "2019",
+          "make": "Infinity",
+          "model": "SUV",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Wax"
+              ],
+              "date": "2025-04-12",
+              "duration": "6",
+              "cost": 130,
+              "productCost": 1.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.0 oz",
+                  "cost": 1.25
+                }
+              ],
+              "profit": 128.75,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771115117717",
+      "name": "Sukana",
+      "vehicles": [
+        {
+          "id": "1771115117717-v1",
+          "year": "2024",
+          "make": "Audi",
+          "model": "SUV",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-10-25",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-07-05",
+              "duration": "1.5",
+              "cost": 15,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 12.8838046875,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771115200254",
+      "name": "Phil Gomez",
+      "vehicles": [
+        {
+          "id": "1771115200255-v1",
+          "year": "2025",
+          "make": "GMC",
+          "model": "Sierra 2500",
+          "color": "White",
+          "services": []
+        }
+      ]
+    },
+    {
+      "id": "1771115225806",
+      "name": "Jenn Gomez",
+      "vehicles": [
+        {
+          "id": "1771115225806-v1",
+          "year": "2023",
+          "make": "GMC",
+          "model": "Yukon XL",
+          "color": "Blue",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-07-06",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 1.3979289940828403,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "1.13 oz",
+                  "cost": 1.3979289940828403
+                }
+              ],
+              "profit": 23.60207100591716,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": "1771115242700",
+          "year": "2018",
+          "make": "Jeep",
+          "model": "Wrangler",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-07-05",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 1.1183431952662721,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.90 oz",
+                  "cost": 1.1183431952662721
+                }
+              ],
+              "profit": 13.881656804733728,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771115275301",
+      "name": "Seth Good",
+      "vehicles": [
+        {
+          "id": "1771115275301-v1",
+          "year": "2021",
+          "make": "Toyota",
+          "model": "Tacoma",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-13",
+              "duration": "1.5",
+              "cost": 0,
+              "productCost": 3.1281203125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "3.24 oz",
+                  "cost": 0.8859375
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.61 oz",
+                  "cost": 0.14319843750000003
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "4.56 oz",
+                  "cost": 1.2476953124999999
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -3.1281203125,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-07-05",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 1.6775147928994083,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "1.35 oz",
+                  "cost": 1.6775147928994083
+                }
+              ],
+              "profit": 13.322485207100591,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771115309295",
+      "name": "Kyle Fogarty",
+      "vehicles": [
+        {
+          "id": "1771115309295-v1",
+          "year": "1996",
+          "make": "Chevy",
+          "model": "K1500",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-11-15",
+              "duration": "1.5",
+              "cost": 0,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": -0.9319526627218936,
+              "notes": "",
+              "performedSteps": [],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-13",
+              "duration": "1.5",
+              "cost": 0,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -2.1161953125,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771115338942",
+      "name": "Rylie Fogarty",
+      "vehicles": [
+        {
+          "id": "1771115338942-v1",
+          "year": "2014",
+          "make": "Jeep",
+          "model": "Wrangler",
+          "color": "White",
+          "services": [
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-11-22",
+              "duration": "3",
+              "cost": 0,
+              "productCost": 1.1183431952662721,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.90 oz",
+                  "cost": 1.1183431952662721
+                }
+              ],
+              "profit": -1.1183431952662721,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771115820196",
+      "name": "Danielle",
+      "vehicles": [
+        {
+          "id": "1771115820196-v1",
+          "year": "2009",
+          "make": "Ford",
+          "model": "Mustang",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Full Detail"
+              ],
+              "date": "2025-12-13",
+              "duration": "6",
+              "cost": 0,
+              "productCost": 9.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.0 oz",
+                  "cost": 1.25
+                },
+                {
+                  "product": "3D One Polish",
+                  "used": "2.0 oz",
+                  "cost": 3.75
+                },
+                {
+                  "product": "Jescar Polish",
+                  "used": "2.0 oz",
+                  "cost": 4.25
+                }
+              ],
+              "profit": -9.25,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771116371529",
+      "name": "Rosie",
+      "vehicles": [
+        {
+          "id": "1771116371529-v1",
+          "year": "2022",
+          "make": "Ford",
+          "model": "Explorer",
+          "color": "Grey",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-09-06",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2026-01-18",
+              "duration": "1.5",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-11-15",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-08-10",
+              "duration": "1.75",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-07-05",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-05-31",
+              "duration": "2",
+              "cost": 25,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": 22.2513515625,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1771117711645",
+      "name": "Kim - ME",
+      "vehicles": [
+        {
+          "id": "1771117711646-v1",
+          "year": "2005",
+          "make": "GMC",
+          "model": "Yukon",
+          "color": "Grey",
+          "services": [
+            {
+              "services": [
+                "Full Detail"
+              ],
+              "date": "2025-05-17",
+              "duration": "7",
+              "cost": 0,
+              "productCost": 13.875,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.5 oz",
+                  "cost": 1.875
+                },
+                {
+                  "product": "3D One Polish",
+                  "used": "3.0 oz",
+                  "cost": 5.625
+                },
+                {
+                  "product": "Jescar Polish",
+                  "used": "3.0 oz",
+                  "cost": 6.375
+                }
+              ],
+              "profit": -13.875,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wax"
+              ],
+              "date": "2025-08-10",
+              "duration": "4",
+              "cost": 0,
+              "productCost": 4.6875,
+              "costBreakdown": [
+                {
+                  "product": "Iron Remover",
+                  "used": "6.0 oz",
+                  "cost": 2.8125
+                },
+                {
+                  "product": "Collinite 845",
+                  "used": "1.5 oz",
+                  "cost": 1.875
+                }
+              ],
+              "profit": -4.6875,
+              "notes": "",
+              "performedSteps": [
+                "wheels_tires",
+                "foam_wash",
+                "windows",
+                "interior_wipe",
+                "vacuum",
+                "tire_dressing",
+                "iron_remover",
+                "clay",
+                "ipa_wipe",
+                "wax_collinite"
+              ],
+              "customSteps": []
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-09-17",
+              "duration": "1.5",
+              "cost": 0,
+              "productCost": 0.9319526627218936,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.75 oz",
+                  "cost": 0.9319526627218936
+                }
+              ],
+              "profit": -0.9319526627218936,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-28",
+              "duration": "1",
+              "cost": 0,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -2.7486484375,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-10-12",
+              "duration": "1.5",
+              "cost": 0,
+              "productCost": 2.7486484375,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -2.7486484375,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Rinseless Wash"
+              ],
+              "date": "2025-07-06",
+              "duration": "1",
+              "cost": 0,
+              "productCost": 2.62384375,
+              "costBreakdown": [
+                {
+                  "product": "P&S Absolute",
+                  "used": "0.50 oz",
+                  "cost": 0.34375
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "2.70 oz",
+                  "cost": 0.73828125
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.51 oz",
+                  "cost": 0.11933203125
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "3.80 oz",
+                  "cost": 1.0397460937499998
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -2.62384375,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": "1771117727562",
+          "year": "2017",
+          "make": "Jeep",
+          "model": "Wrangler",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Full Detail"
+              ],
+              "date": "2025-04-12",
+              "duration": "6",
+              "cost": 0,
+              "productCost": 11.1,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.2 oz",
+                  "cost": 1.5
+                },
+                {
+                  "product": "3D One Polish",
+                  "used": "2.4 oz",
+                  "cost": 4.5
+                },
+                {
+                  "product": "Jescar Polish",
+                  "used": "2.4 oz",
+                  "cost": 5.1
+                }
+              ],
+              "profit": -11.1,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Wash and Shine"
+              ],
+              "date": "2025-12-27",
+              "duration": "3",
+              "cost": 0,
+              "productCost": 1.1183431952662721,
+              "costBreakdown": [
+                {
+                  "product": "S0.03 Ceramic",
+                  "used": "0.90 oz",
+                  "cost": 1.1183431952662721
+                }
+              ],
+              "profit": -1.1183431952662721,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771117745585",
+      "name": "Dad",
+      "vehicles": [
+        {
+          "id": "1771117745585-v1",
+          "year": "2017",
+          "make": "Kia",
+          "model": "Soul",
+          "color": "Black",
+          "services": [
+            {
+              "services": [
+                "Basic Wash"
+              ],
+              "date": "2025-12-28",
+              "duration": "1",
+              "cost": 0,
+              "productCost": 2.1161953125,
+              "costBreakdown": [
+                {
+                  "product": "Magic Shampoo",
+                  "used": "2.50 oz",
+                  "cost": 0.46855468749999996
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -2.1161953125,
+              "notes": ""
+            },
+            {
+              "services": [
+                "Rinseless Wash"
+              ],
+              "date": "2025-07-06",
+              "duration": "1",
+              "cost": 0,
+              "productCost": 1.991390625,
+              "costBreakdown": [
+                {
+                  "product": "P&S Absolute",
+                  "used": "0.50 oz",
+                  "cost": 0.34375
+                },
+                {
+                  "product": "Brake Buster",
+                  "used": "1.80 oz",
+                  "cost": 0.4921875
+                },
+                {
+                  "product": "XPress Interior",
+                  "used": "0.34 oz",
+                  "cost": 0.0795546875
+                },
+                {
+                  "product": "Tech 582",
+                  "used": "2.53 oz",
+                  "cost": 0.6931640625
+                },
+                {
+                  "product": "Tire Dressing",
+                  "used": "1.00 oz",
+                  "cost": 0.382734375
+                }
+              ],
+              "profit": -1.991390625,
+              "notes": ""
+            }
+          ]
+        }
+      ],
+      "isFamily": true
+    },
+    {
+      "id": "1771122015187",
+      "name": "Bethany",
+      "vehicles": [
+        {
+          "id": "1771122015187-v1",
+          "year": "2022",
+          "make": "Honda",
+          "model": "SUV",
+          "color": "Blue",
+          "services": [
+            {
+              "services": [
+                "Wax"
+              ],
+              "date": "2025-12-06",
+              "duration": "2",
+              "cost": 15,
+              "productCost": 1.25,
+              "costBreakdown": [
+                {
+                  "product": "Collinite 845",
+                  "used": "1.0 oz",
+                  "cost": 1.25
+                }
+              ],
+              "profit": 13.75,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expenses": [
+    {
+      "id": "1771122263980",
+      "date": "2026-01-17",
+      "category": "Supplies (Towels, Brushes, etc)",
+      "description": "Drying towel",
+      "amount": 25
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Magic Shampoo",
+      "size": 128,
+      "unit": "oz",
+      "cost": 23.99,
+      "category": "Wash"
+    },
+    {
+      "id": "2",
+      "name": "Brake Buster",
+      "size": 128,
+      "unit": "oz",
+      "cost": 35,
+      "category": "Wheels"
+    },
+    {
+      "id": "3",
+      "name": "Green Star (GS)",
+      "size": 33.8,
+      "unit": "oz",
+      "cost": 13,
+      "category": "Wheels"
+    },
+    {
+      "id": "4",
+      "name": "P&S Absolute Rinseless",
+      "size": 32,
+      "unit": "oz",
+      "cost": 22,
+      "category": "Wash"
+    },
+    {
+      "id": "5",
+      "name": "XPress Interior Cleaner",
+      "size": 128,
+      "unit": "oz",
+      "cost": 29.95,
+      "category": "Interior"
+    },
+    {
+      "id": "6",
+      "name": "Tech 582 Detail Spray",
+      "size": 128,
+      "unit": "oz",
+      "cost": 35,
+      "category": "Detail"
+    },
+    {
+      "id": "7",
+      "name": "Extreme Tire Dressing",
+      "size": 128,
+      "unit": "oz",
+      "cost": 48.99,
+      "category": "Tires"
+    },
+    {
+      "id": "8",
+      "name": "S0.03 Ceramic",
+      "size": 33.8,
+      "unit": "oz",
+      "cost": 42,
+      "category": "Ceramic"
+    },
+    {
+      "id": "9",
+      "name": "Iron Remover",
+      "size": 32,
+      "unit": "oz",
+      "cost": 15,
+      "category": "Decon"
+    },
+    {
+      "id": "10",
+      "name": "IPA (71%)",
+      "size": 0,
+      "unit": "oz",
+      "cost": 0,
+      "category": "Prep"
+    },
+    {
+      "id": "11",
+      "name": "3D One Polish",
+      "size": 16,
+      "unit": "oz",
+      "cost": 30,
+      "category": "Polish"
+    },
+    {
+      "id": "12",
+      "name": "Jescar Polish",
+      "size": 16,
+      "unit": "oz",
+      "cost": 34,
+      "category": "Polish"
+    },
+    {
+      "id": "13",
+      "name": "Collinite 845",
+      "size": 16,
+      "unit": "oz",
+      "cost": 20,
+      "category": "Wax"
+    }
+  ],
+  "exportDate": "2026-02-18T00:58:10.511Z",
+  "appVersion": "2.0"
+}
