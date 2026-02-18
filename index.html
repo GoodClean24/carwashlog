@@ -4062,9 +4062,12 @@
                             
                             servicesList.push({
                                 client: client.name,
+                                clientId: client.id,
                                 vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+                                vehicleId: vehicle.id,
                                 service: service.services.join(', '),
                                 cost: service.cost,
+                                productCost: service.productCost || 0,
                                 date: service.date
                             });
                         }
@@ -4141,6 +4144,10 @@
                         </div>
                         <div style="color: #64748b; font-size: 14px;">${s.vehicle}</div>
                         <div style="color: #2A466F; font-size: 14px;">${s.service} • ${formatDate(s.date)}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0;">
+                            <div style="color: #DC2626; font-size: 13px; font-weight: 600;">Product Cost: $${(s.productCost || 0).toFixed(2)}</div>
+                            <button onclick="editDashboardService('${s.clientId}', '${s.vehicleId}', '${s.date}')" style="background: #105495; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">Edit Products</button>
+                        </div>
                     </div>
                 `).join('') : '<div style="color: #64748b; text-align: center; padding: 20px;">No services in this period</div>'}
             `;
@@ -4362,6 +4369,67 @@
                     showScreen('mainMenu');
                 }, 1000);
             }, 100);
+        }
+
+
+        // Edit service products from dashboard
+        function editDashboardService(clientId, vehicleId, serviceDate) {
+            // Find the client and service
+            const client = clients.find(c => c.id === clientId);
+            if (!client) {
+                alert('Client not found');
+                return;
+            }
+            
+            const vehicle = client.vehicles.find(v => v.id === vehicleId);
+            if (!vehicle) {
+                alert('Vehicle not found');
+                return;
+            }
+            
+            const service = vehicle.services.find(s => s.date === serviceDate);
+            if (!service) {
+                alert('Service not found');
+                return;
+            }
+            
+            // Set current client and vehicle for edit
+            currentClientId = clientId;
+            currentVehicleId = vehicleId;
+            
+            // Find the service index
+            currentServiceIndex = vehicle.services.findIndex(s => s.date === serviceDate);
+            
+            // Open edit screen with this service
+            document.getElementById('edit-service-basic').checked = service.services.includes('Basic Wash');
+            document.getElementById('edit-service-shine').checked = service.services.includes('Wash and Shine');
+            document.getElementById('edit-service-wax').checked = service.services.includes('Wax');
+            document.getElementById('edit-service-detail').checked = service.services.includes('Full Detail');
+            document.getElementById('edit-service-rinseless').checked = service.services.includes('Rinseless Wash');
+            
+            document.getElementById('editServiceDate').value = service.date;
+            document.getElementById('editServiceDuration').value = service.duration || '';
+            document.getElementById('editServiceCost').value = service.cost;
+            document.getElementById('editServiceNotes').value = service.notes || '';
+            
+            // Show steps UI
+            updateEditServiceStepsDisplay();
+            
+            // Pre-check the steps that were performed
+            setTimeout(() => {
+                document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = false);
+                
+                if (service.performedSteps && service.performedSteps.length > 0) {
+                    service.performedSteps.forEach(stepId => {
+                        const checkbox = document.querySelector(`.edit-service-step[value="${stepId}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                } else {
+                    document.querySelectorAll('.edit-service-step').forEach(cb => cb.checked = true);
+                }
+            }, 100);
+            
+            showScreen('editService');
         }
 
         init();
