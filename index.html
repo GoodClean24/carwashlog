@@ -1247,6 +1247,9 @@
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
                     { id: 'tire_dressing', label: 'Tire Dressing' }
+                ],
+                'Ceramic Shine': [
+                    { id: 'detailer_spray', label: 'Tech 582' }
                 ]
             },
             'Wash and Shine': {
@@ -1260,6 +1263,9 @@
                 ],
                 'Ceramic Steps': [
                     { id: 'ceramic_application', label: 'S0.03 Ceramic Application' }
+                ],
+                'Ceramic Shine': [
+                    { id: 'detailer_spray', label: 'Tech 582' }
                 ]
             },
             'Wax': {
@@ -1278,6 +1284,9 @@
                 'Wax Steps': [
                     { id: 'ipa_wipe', label: 'IPA Wipe Down' },
                     { id: 'wax_collinite', label: 'Wax (Collinite)' }
+                ],
+                'Ceramic Shine': [
+                    { id: 'detailer_spray', label: 'Tech 582' }
                 ]
             },
             'Full Detail': {
@@ -1300,6 +1309,9 @@
                 'Wax Steps': [
                     { id: 'ipa_wipe', label: 'IPA Wipe Down' },
                     { id: 'wax_collinite', label: 'Wax (Collinite)' }
+                ],
+                'Ceramic Shine': [
+                    { id: 'detailer_spray', label: 'Tech 582' }
                 ]
             },
             'Rinseless Wash': {
@@ -1310,6 +1322,9 @@
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
                     { id: 'tire_dressing', label: 'Tire Dressing' }
+                ],
+                'Ceramic Shine': [
+                    { id: 'detailer_spray', label: 'Tech 582' }
                 ]
             }
         };
@@ -3643,7 +3658,7 @@
                         breakdown.push({ product: 'Magic Shampoo', amount: '2.5 oz' });
                         breakdown.push({ product: 'Brake Buster', amount: (9 * 0.20 * sizeMultiplier).toFixed(1) + ' oz' });
                         breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
-                        breakdown.push({ product: 'Tech 582 Glass', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tech 582', amount: (20 * 0.10 * 0.5 * sizeMultiplier).toFixed(1) + ' oz' });
                         breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
                     }
                     if (serviceName === 'Wash and Shine') {
@@ -3661,7 +3676,7 @@
                     if (serviceName === 'Rinseless Wash') {
                         breakdown.push({ product: 'P&S Absolute Rinseless', amount: '0.5 oz' });
                         breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
-                        breakdown.push({ product: 'Tech 582 Glass', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Tech 582', amount: (20 * 0.10 * 0.5 * sizeMultiplier).toFixed(1) + ' oz' });
                         breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
                     }
                 });
@@ -3673,7 +3688,9 @@
                 }
                 if (performedSteps.includes('interior_wipe')) {
                     breakdown.push({ product: 'XPress Interior', amount: (3.4 * 0.10 * sizeMultiplier).toFixed(1) + ' oz' });
-                    breakdown.push({ product: 'Tech 582', amount: (16.9 * 0.15 * sizeMultiplier).toFixed(1) + ' oz' });
+                }
+                if (performedSteps.includes('detailer_spray')) {
+                    breakdown.push({ product: 'Tech 582', amount: (20 * 0.10 * 0.5 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('tire_dressing')) {
                     breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
