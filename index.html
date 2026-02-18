@@ -1339,6 +1339,7 @@
         let customSteps = [];
 
         let clearedReminders = [];
+        let mainMenuHiddenReminders = []; // Hide from main menu only
         let currentVehicleId = null;
 
         function init() {
@@ -4046,6 +4047,7 @@
                 
                 const reminderKey = `${client.id}-${vehicle.id}`;
                 if (clearedReminders.includes(reminderKey)) return;
+                if (mainMenuHiddenReminders.includes(reminderKey)) return; // Hidden from main menu
                 
                 const serviceType = lastService.services[0];
                 let threshold = 0;
