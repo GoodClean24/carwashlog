@@ -683,23 +683,23 @@
             
             <div class="checkbox-grid" id="editServiceCheckboxes">
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-basic" onchange="updateEditServiceStepsDisplay()">
+                    <input type="radio" name="editServiceType" id="edit-service-basic" onchange="updateEditServiceStepsDisplay()">
                     <span>Basic Wash</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-shine" onchange="updateEditServiceStepsDisplay()">
+                    <input type="radio" name="editServiceType" id="edit-service-shine" onchange="updateEditServiceStepsDisplay()">
                     <span>Wash and Shine</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-wax" onchange="updateEditServiceStepsDisplay()">
+                    <input type="radio" name="editServiceType" id="edit-service-wax" onchange="updateEditServiceStepsDisplay()">
                     <span>Wax</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-detail" onchange="updateEditServiceStepsDisplay()">
+                    <input type="radio" name="editServiceType" id="edit-service-detail" onchange="updateEditServiceStepsDisplay()">
                     <span>Full Detail</span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" id="edit-service-rinseless" onchange="updateEditServiceStepsDisplay()">
+                    <input type="radio" name="editServiceType" id="edit-service-rinseless" onchange="updateEditServiceStepsDisplay()">
                     <span>Rinseless Wash</span>
                 </label>
             </div>
@@ -904,24 +904,24 @@
             <p style="color: #64748b; margin-bottom: 16px;" id="serviceVehicleInfo"></p>
             
             <div class="checkbox-group">
-                <div class="checkbox-item" onclick="toggleService('basic'); updateServiceStepsDisplay();">
-                    <input type="checkbox" id="service-basic">
+                <div class="checkbox-item" onclick="selectService('basic')">
+                    <input type="radio" name="serviceType" id="service-basic">
                     <label>Basic Wash</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('shine'); updateServiceStepsDisplay();">
-                    <input type="checkbox" id="service-shine">
+                <div class="checkbox-item" onclick="selectService('shine')">
+                    <input type="radio" name="serviceType" id="service-shine">
                     <label>Wash and Shine</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('wax'); updateServiceStepsDisplay();">
-                    <input type="checkbox" id="service-wax">
+                <div class="checkbox-item" onclick="selectService('wax')">
+                    <input type="radio" name="serviceType" id="service-wax">
                     <label>Wax</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('detail'); updateServiceStepsDisplay();">
-                    <input type="checkbox" id="service-detail">
+                <div class="checkbox-item" onclick="selectService('detail')">
+                    <input type="radio" name="serviceType" id="service-detail">
                     <label>Full Detail</label>
                 </div>
-                <div class="checkbox-item" onclick="toggleService('rinseless'); updateServiceStepsDisplay();">
-                    <input type="checkbox" id="service-rinseless">
+                <div class="checkbox-item" onclick="selectService('rinseless')">
+                    <input type="radio" name="serviceType" id="service-rinseless">
                     <label>Rinseless Wash</label>
                 </div>
             </div>
@@ -1963,6 +1963,14 @@
             
             showScreen('mainMenu');
             calculateMainMenuStats();
+        }
+
+
+        // Select service (radio button behavior)
+        function selectService(service) {
+            // Radio buttons handle the selection automatically
+            // Just update the steps display
+            updateServiceStepsDisplay();
         }
 
         function toggleService(type) {
