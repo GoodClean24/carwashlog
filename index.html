@@ -4501,6 +4501,27 @@
             }
         }
 
+
+        // Clear a single reminder from main menu only (X button)
+        function clearSingleReminder(clientId, vehicleName) {
+            const client = clients.find(c => c.id === clientId);
+            if (!client) return;
+            
+            // Find the vehicle by name
+            const vehicle = client.vehicles.find(v => 
+                `${v.year} ${v.make} ${v.model}` === vehicleName
+            );
+            
+            if (vehicle) {
+                const reminderKey = `${clientId}-${vehicle.id}`;
+                if (!mainMenuHiddenReminders.includes(reminderKey)) {
+                    mainMenuHiddenReminders.push(reminderKey);
+                }
+                localStorage.setItem('carwash_main_menu_hidden', JSON.stringify(mainMenuHiddenReminders));
+                checkMainMenuReminders();
+            }
+        }
+
         init();
     </script>
 </body>
