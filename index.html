@@ -2786,10 +2786,24 @@
             const sortedServices = [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date));
             const service = sortedServices[serviceIndex];
             
+            if (!service) {
+                alert('Error: Service not found at index ' + serviceIndex);
+                return;
+            }
+            
             // Find the ACTUAL index in the unsorted array using date + cost as unique identifier
             currentServiceIndex = vehicle.services.findIndex(s => 
                 s.date === service.date && s.cost === service.cost && s.services.join(',') === service.services.join(',')
             );
+            
+            // Debug: Check if we found the service
+            if (currentServiceIndex === -1) {
+                console.error('Could not find service in unsorted array');
+                console.log('Looking for:', service);
+                console.log('In array:', vehicle.services);
+                alert('Error: Could not find service to edit. Please try again.');
+                return;
+            }
             
             // Set checkboxes
             document.getElementById('edit-service-basic').checked = service.services.includes('Basic Wash');
@@ -4134,6 +4148,65 @@
         function cancelRepeatService() {
             pendingRepeatService = null;
             showScreen('quickLog');
+        }
+
+
+        // Update edit service steps display
+        function updateEditServiceStepsDisplay() {
+            const stepsSection = document.getElementById('editServiceStepsSection');
+            const stepsContainer = document.getElementById('editServiceStepsContainer');
+            
+            if (!stepsSection || !stepsContainer) return;
+            
+            const selectedServices = [];
+            if (document.getElementById('edit-service-basic')?.checked) selectedServices.push('Basic Wash');
+            if (document.getElementById('edit-service-shine')?.checked) selectedServices.push('Wash and Shine');
+            if (document.getElementById('edit-service-wax')?.checked) selectedServices.push('Wax');
+            if (document.getElementById('edit-service-detail')?.checked) selectedServices.push('Full Detail');
+            if (document.getElementById('edit-service-rinseless')?.checked) selectedServices.push('Rinseless Wash');
+            
+            if (selectedServices.length === 0) {
+                stepsSection.classList.add('hidden');
+                return;
+            }
+            
+            let serviceType = 'Basic Wash';
+            if (selectedServices.includes('Full Detail')) serviceType = 'Full Detail';
+            else if (selectedServices.includes('Wax')) serviceType = 'Wax';
+            else if (selectedServices.includes('Wash and Shine')) serviceType = 'Wash and Shine';
+            else if (selectedServices.includes('Rinseless Wash')) serviceType = 'Rinseless Wash';
+            
+            const steps = SERVICE_STEPS[serviceType];
+            if (!steps) {
+                stepsSection.classList.add('hidden');
+                return;
+            }
+            
+            stepsSection.classList.remove('hidden');
+            
+            let html = '';
+            Object.entries(steps).forEach(([categoryName, categorySteps]) => {
+                html += '<div class="step-category">';
+                html += '<div class="step-category-title">' + categoryName + '</div>';
+                html += '<div class="checkbox-group">';
+                
+                categorySteps.forEach(step => {
+                    html += '<label class="checkbox-label">';
+                    html += '<input type="checkbox" class="edit-service-step" value="' + step.id + '" checked>';
+                    html += step.label;
+                    html += '</label>';
+                });
+                
+                html += '</div></div>';
+            });
+            
+            stepsContainer.innerHTML = html;
+        }
+        
+        // Get performed steps from edit form
+        function getEditPerformedSteps() {
+            const checkboxes = document.querySelectorAll('.edit-service-step:checked');
+            return Array.from(checkboxes).map(cb => cb.value);
         }
 
         init();
