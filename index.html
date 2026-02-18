@@ -1243,6 +1243,7 @@
                 'Basic Wash Steps': [
                     { id: 'wheels_tires', label: 'Wheels/Tires' },
                     { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'debugger', label: 'Debugger (Bug Remover)' },
                     { id: 'windows', label: 'Windows' },
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
@@ -1256,6 +1257,7 @@
                 'Basic Wash Steps': [
                     { id: 'wheels_tires', label: 'Wheels/Tires' },
                     { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'debugger', label: 'Debugger (Bug Remover)' },
                     { id: 'windows', label: 'Windows' },
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
@@ -1272,6 +1274,7 @@
                 'Basic Wash Steps': [
                     { id: 'wheels_tires', label: 'Wheels/Tires' },
                     { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'debugger', label: 'Debugger (Bug Remover)' },
                     { id: 'windows', label: 'Windows' },
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
@@ -1293,6 +1296,7 @@
                 'Basic Wash Steps': [
                     { id: 'wheels_tires', label: 'Wheels/Tires' },
                     { id: 'foam_wash', label: 'Foam + Contact Wash' },
+                    { id: 'debugger', label: 'Debugger (Bug Remover)' },
                     { id: 'windows', label: 'Windows' },
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
@@ -1318,6 +1322,7 @@
                 'Rinseless Steps': [
                     { id: 'rinseless_wheels', label: 'Wheels/Tires' },
                     { id: 'rinseless_wash', label: 'Rinseless Wash' },
+                    { id: 'debugger', label: 'Debugger (Bug Remover)' },
                     { id: 'windows', label: 'Windows' },
                     { id: 'interior_wipe', label: 'Interior Wipe Down' },
                     { id: 'vacuum', label: 'Vacuum' },
@@ -3392,9 +3397,9 @@
             }[vehicleSize] || 1;
 
             services.forEach(serviceName => {
-                if (serviceName.includes('Basic Wash') || serviceName.includes('Rinseless')) {
+                if (serviceName === 'Basic Wash' || serviceName === 'Wash and Shine' || serviceName === 'Rinseless Wash' || serviceName === 'Wax' || serviceName === 'Full Detail') {
                     // Magic Shampoo: 2.5 oz per vehicle (all sizes)
-                    if (serviceName.includes('Basic Wash')) {
+                    if (serviceName === 'Basic Wash' || serviceName === 'Wash and Shine' || serviceName === 'Wax' || serviceName === 'Full Detail') {
                         const shampoo = products.find(p => p.name.includes('Magic'));
                         if (shampoo && shampoo.cost > 0) {
                             const used = 2.5;
@@ -3405,7 +3410,7 @@
                     }
 
                     // P&S Absolute Rinseless: 1 cap (~0.5 oz) per vehicle
-                    if (serviceName.includes('Rinseless')) {
+                    if (serviceName === 'Rinseless Wash') {
                         const absolute = products.find(p => p.name.includes('Absolute'));
                         if (absolute && absolute.cost > 0) {
                             const used = 0.5;
@@ -3694,6 +3699,9 @@
                 }
                 if (performedSteps.includes('tire_dressing')) {
                     breakdown.push({ product: 'Tire Dressing', amount: '1 oz' });
+                }
+                if (performedSteps.includes('debugger')) {
+                    breakdown.push({ product: 'Koch Chemie GS', amount: (1.5 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('ceramic_application')) {
                     breakdown.push({ product: 'S0.03 Ceramic', amount: '0.75 oz' });
