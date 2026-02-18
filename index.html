@@ -731,7 +731,7 @@
             </div>
             
             <button class="submit-btn" onclick="saveServiceEdit()">Save Changes</button>
-            <button class="back-btn" onclick="viewClientProfile(currentClientId)">Cancel</button>
+            <button class="back-btn" onclick="cancelEditService()">Cancel</button>
         </div>
 
         
@@ -1069,7 +1069,7 @@
             </div>
             
             <button class="submit-btn" onclick="saveClientEdit()">Save Changes</button>
-            <button class="back-btn" onclick="viewClientProfile(currentClientId)">Cancel</button>
+            <button class="back-btn" onclick="cancelEditService()">Cancel</button>
         </div>
 
         <!-- Add Vehicle Screen -->
@@ -1095,7 +1095,7 @@
             </div>
             
             <button class="submit-btn" onclick="addVehicleToClient()">Add Vehicle</button>
-            <button class="back-btn" onclick="viewClientProfile(currentClientId)">Cancel</button>
+            <button class="back-btn" onclick="cancelEditService()">Cancel</button>
         </div>
 
         <!-- Services & Pricing -->
@@ -1236,6 +1236,9 @@
         let expenses = [];
         let products = [];
         let currentClientId = null;
+        // Track where edit was opened from
+        let editOpenedFrom = 'clientProfile'; // Default to client profile
+
 
         // Service Steps Definitions
         const SERVICE_STEPS = {
@@ -2838,6 +2841,9 @@
         }
 
         function showEditService(vehicleId, serviceIndex) {
+            // Remember we came from client profile
+            editOpenedFrom = 'clientProfile';
+            
             currentVehicleId = vehicleId;
             
             const client = clients.find(c => c.id === currentClientId);
@@ -2931,9 +2937,22 @@
             const client = clients.find(c => c.id === currentClientId);
             const vehicle = client.vehicles.find(v => v.id === currentVehicleId);
             
-            // Recalculate product cost
+            // Get performed steps FIRST
+            const performedSteps = getEditPerformedSteps();
+            
+            // Recalculate product cost using step-based breakdown
             const vehicleSize = determineVehicleSize(vehicle);
-            const { totalCost: productCost, breakdown } = calculateServiceCost(services, vehicleSize);
+            const productBreakdown = getProductBreakdown(services, vehicleSize, performedSteps);
+            
+            // Calculate total product cost from breakdown
+            let productCost = 0;
+            productBreakdown.forEach(item => {
+                const product = products.find(p => p.name.includes(item.product) || item.product.includes(p.name));
+                if (product) {
+                    const amount = parseFloat(item.amount);
+                    productCost += (amount / product.size) * product.cost;
+                }
+            });
 
             // Update the service
             vehicle.services[currentServiceIndex] = {
@@ -2942,22 +2961,30 @@
                 duration: duration,
                 cost: parseFloat(cost),
                 productCost: productCost,
-                costBreakdown: breakdown,
+                costBreakdown: productBreakdown,
                 profit: parseFloat(cost) - productCost,
                 notes: notes,
-                performedSteps: getEditPerformedSteps(),
+                performedSteps: performedSteps,
                 customSteps: vehicle.services[currentServiceIndex].customSteps || []
             };
 
             saveData();
             
-            // Refresh the client profile to show updated service
-            viewClientProfile(currentClientId);
-            
-            // Show success message after refresh
-            setTimeout(() => {
-                alert('Service updated!');
-            }, 100);
+            // Return to where we came from
+            if (editOpenedFrom === 'dashboard') {
+                // Go back to dashboard
+                showScreen('dashboard');
+                updateDashboard();
+                setTimeout(() => {
+                    alert('Service updated! Refresh the detail view to see changes.');
+                }, 100);
+            } else {
+                // Refresh the client profile to show updated service
+                viewClientProfile(currentClientId);
+                setTimeout(() => {
+                    alert('Service updated!');
+                }, 100);
+            }
         }
 
         function deleteService(vehicleId, serviceIndex) {
@@ -3689,6 +3716,8 @@
                 // Use performed steps
                 if (performedSteps.includes('foam_wash')) {
                     breakdown.push({ product: 'Magic Shampoo', amount: '2.5 oz' });
+                }
+                if (performedSteps.includes('wheels_tires')) {
                     breakdown.push({ product: 'Brake Buster', amount: (9 * 0.20 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('interior_wipe')) {
@@ -4399,6 +4428,9 @@
 
         // Edit service products from dashboard
         function editDashboardService(clientId, vehicleId, serviceDate) {
+            // Remember we came from dashboard
+            editOpenedFrom = 'dashboard';
+            
             // Find the client and service
             const client = clients.find(c => c.id === clientId);
             if (!client) {
@@ -4455,6 +4487,16 @@
             }, 100);
             
             showScreen('editService');
+        }
+
+
+        function cancelEditService() {
+            if (editOpenedFrom === 'dashboard') {
+                showScreen('dashboard');
+                updateDashboard();
+            } else {
+                viewClientProfile(currentClientId);
+            }
         }
 
         init();
