@@ -837,6 +837,33 @@
             <button class="back-btn" onclick="cancelRepeatService()">Cancel</button>
         </div>
 
+
+        <!-- Recalculate Services Screen -->
+        <div id="recalculateServices" class="card screen">
+            <h2 style="color: #142B55; margin-bottom: 20px;">Recalculate Product Costs</h2>
+            
+            <p style="color: #64748b; margin-bottom: 20px;">
+                This will recalculate product costs for ALL services using the current product amounts. 
+                This is useful after updating product ratios or amounts.
+            </p>
+            
+            <div style="background: #FEF3C7; border: 2px solid #F59E0B; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="font-weight: 700; color: #92400E; margin-bottom: 8px;">⚠️ Warning</div>
+                <div style="color: #78350F; font-size: 14px;">
+                    This will update product costs and profits for all existing services. 
+                    Make sure you have a backup before proceeding.
+                </div>
+            </div>
+            
+            <div id="recalcProgress" class="hidden" style="background: #F8F9FD; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="color: #142B55; font-weight: 600; margin-bottom: 8px;">Progress:</div>
+                <div id="recalcProgressText" style="color: #64748b;"></div>
+            </div>
+            
+            <button class="submit-btn" onclick="startRecalculation()">Recalculate All Services</button>
+            <button class="back-btn" onclick="showScreen('mainMenu')">← Back to Menu</button>
+        </div>
+
         <!-- Quick Log Service - Client Select -->
         <div id="quickLog" class="card screen">
             <button class="back-btn" onclick="showScreen('mainMenu')" style="margin-bottom: 16px;">← Back to Menu</button>
@@ -3296,6 +3323,9 @@
             if (product) {
                 product.cost = parseFloat(newCost) || 0;
                 saveData();
+                
+                // Auto-recalculate all services with new product cost
+                recalculateAllServices();
             }
         }
 
@@ -3620,13 +3650,13 @@
                         breakdown.push({ product: 'S0.03 Ceramic', amount: '0.75 oz' });
                     }
                     if (serviceName === 'Wax' || serviceName === 'Full Detail') {
-                        breakdown.push({ product: 'Iron Remover', amount: (4 * sizeMultiplier).toFixed(1) + ' oz' });
-                        breakdown.push({ product: 'IPA Wipe', amount: (8 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Iron Remover', amount: (1.5 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'IPA Wipe', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                         breakdown.push({ product: 'Collinite 845 Wax', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                     }
                     if (serviceName === 'Full Detail') {
-                        breakdown.push({ product: '3D One Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
-                        breakdown.push({ product: 'Jescar Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: '3D One Polish', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
+                        breakdown.push({ product: 'Jescar Polish', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                     }
                     if (serviceName === 'Rinseless Wash') {
                         breakdown.push({ product: 'P&S Absolute Rinseless', amount: '0.5 oz' });
@@ -3652,19 +3682,19 @@
                     breakdown.push({ product: 'S0.03 Ceramic', amount: '0.75 oz' });
                 }
                 if (performedSteps.includes('iron_remover')) {
-                    breakdown.push({ product: 'Iron Remover', amount: (4 * sizeMultiplier).toFixed(1) + ' oz' });
+                    breakdown.push({ product: 'Iron Remover', amount: (1.5 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('ipa_wipe')) {
-                    breakdown.push({ product: 'IPA', amount: (8 * sizeMultiplier).toFixed(1) + ' oz' });
+                    breakdown.push({ product: 'IPA', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('wax_collinite')) {
                     breakdown.push({ product: 'Collinite 845', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('compound_3d')) {
-                    breakdown.push({ product: '3D One Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                    breakdown.push({ product: '3D One Polish', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('polish_jescar')) {
-                    breakdown.push({ product: 'Jescar Polish', amount: (2 * sizeMultiplier).toFixed(1) + ' oz' });
+                    breakdown.push({ product: 'Jescar Polish', amount: (1 * sizeMultiplier).toFixed(1) + ' oz' });
                 }
                 if (performedSteps.includes('rinseless_wash')) {
                     breakdown.push({ product: 'P&S Absolute', amount: '0.5 oz' });
@@ -4253,6 +4283,85 @@
         function getEditPerformedSteps() {
             const checkboxes = document.querySelectorAll('.edit-service-step:checked');
             return Array.from(checkboxes).map(cb => cb.value);
+        }
+
+
+        // Recalculate all services with current product amounts
+
+        // Silently recalculate all services (no UI)
+        function recalculateAllServices() {
+            clients.forEach(client => {
+                client.vehicles.forEach(vehicle => {
+                    const vehicleSize = determineVehicleSize(vehicle);
+                    
+                    vehicle.services.forEach(service => {
+                        // Recalculate product cost
+                        const { totalCost: productCost, breakdown } = calculateServiceCost(service.services, vehicleSize);
+                        
+                        // Update the service
+                        service.productCost = productCost;
+                        service.costBreakdown = breakdown;
+                        service.profit = service.cost - productCost;
+                    });
+                });
+            });
+            
+            // Save the updated data
+            saveData();
+        }
+
+        function startRecalculation() {
+            if (!confirm('This will recalculate product costs for ALL services. Continue?')) {
+                return;
+            }
+            
+            const progressDiv = document.getElementById('recalcProgress');
+            const progressText = document.getElementById('recalcProgressText');
+            progressDiv.classList.remove('hidden');
+            
+            let totalServices = 0;
+            let updated = 0;
+            
+            // Count total services
+            clients.forEach(client => {
+                client.vehicles.forEach(vehicle => {
+                    totalServices += vehicle.services.length;
+                });
+            });
+            
+            progressText.textContent = `Processing 0 of ${totalServices} services...`;
+            
+            // Process all services
+            setTimeout(() => {
+                clients.forEach(client => {
+                    client.vehicles.forEach(vehicle => {
+                        const vehicleSize = determineVehicleSize(vehicle);
+                        
+                        vehicle.services.forEach(service => {
+                            // Recalculate product cost
+                            const { totalCost: productCost, breakdown } = calculateServiceCost(service.services, vehicleSize);
+                            
+                            // Update the service
+                            service.productCost = productCost;
+                            service.costBreakdown = breakdown;
+                            service.profit = service.cost - productCost;
+                            
+                            updated++;
+                            progressText.textContent = `Processing ${updated} of ${totalServices} services...`;
+                        });
+                    });
+                });
+                
+                // Save the updated data
+                saveData();
+                
+                progressText.textContent = `✅ Complete! Updated ${updated} services.`;
+                
+                setTimeout(() => {
+                    alert(`Successfully recalculated ${updated} services!`);
+                    showScreen('mainMenu');
+                }, 1000);
+            }, 100);
         }
 
         init();
