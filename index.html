@@ -4701,6 +4701,7 @@
                 // Toggle paid status
                 vehicle.services[actualIndex].paid = !vehicle.services[actualIndex].paid;
                 saveData();
+                calculateIncome(); // Update unpaid stats
                 viewClientProfile(currentClientId); // Refresh to show new status
             }
         }
