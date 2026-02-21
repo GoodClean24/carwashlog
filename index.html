@@ -4544,7 +4544,11 @@
         // Check for unpaid services and display alert
         function checkUnpaidServices() {
             const unpaidAlert = document.getElementById('unpaidServicesAlert');
-            if (!unpaidAlert) return;
+            if (!unpaidAlert) {
+                console.log('unpaidServicesAlert element not found!');
+                return;
+            }
+            console.log('Checking unpaid services...');
             
             const unpaidServices = [];
             const now = new Date();
@@ -4554,7 +4558,7 @@
                 
                 client.vehicles.forEach(vehicle => {
                     vehicle.services.forEach(service => {
-                        if (!service.paid) { // Unpaid services
+                        if (service.paid !== true) { // Unpaid services (undefined or false)
                             const serviceDate = new Date(service.date);
                             const daysAgo = Math.floor((now - serviceDate) / (1000 * 60 * 60 * 24));
                             
@@ -4605,6 +4609,7 @@
                 </div>
             `;
             
+            console.log('Found', unpaidServices.length, 'unpaid services');
             unpaidAlert.innerHTML = html;
         }
 
