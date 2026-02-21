@@ -1692,8 +1692,12 @@
             
             let currentMonthTotal = 0;
             let ytdTotal = 0;
+            let unpaidTotal = 0;
+            let unpaidCount = 0;
             
             clients.forEach(client => {
+                if (client.isFamily) return; // Skip family for unpaid calc
+                
                 client.vehicles.forEach(vehicle => {
                     vehicle.services.forEach(service => {
                         const serviceDate = new Date(service.date + 'T00:00:00');
@@ -1709,12 +1713,20 @@
                                 currentMonthTotal += service.cost;
                             }
                         }
+                        
+                        // Unpaid services
+                        if (service.paid !== true) {
+                            unpaidTotal += service.cost;
+                            unpaidCount++;
+                        }
                     });
                 });
             });
             
             document.getElementById('currentMonthTotal').textContent = '$' + currentMonthTotal.toFixed(2);
             document.getElementById('ytdTotal').textContent = '$' + ytdTotal.toFixed(2);
+            document.getElementById('unpaidTotal').textContent = '$' + unpaidTotal.toFixed(2);
+            document.getElementById('unpaidJobsCount').textContent = unpaidCount;
         }
 
         function showMonthlyBreakdown() {
@@ -4644,6 +4656,50 @@
                 checkUnpaidServices(); // Refresh main menu alert
                 viewClientProfile(currentClientId); // Refresh profile
             }
+        }
+
+
+        // Show unpaid services popup
+        function showUnpaidPopup() {
+            const unpaidServices = [];
+            const now = new Date();
+            
+            clients.forEach(client => {
+                if (client.isFamily) return;
+                
+                client.vehicles.forEach(vehicle => {
+                    vehicle.services.forEach(service => {
+                        if (service.paid !== true) {
+                            const serviceDate = new Date(service.date);
+                            const daysAgo = Math.floor((now - serviceDate) / (1000 * 60 * 60 * 24));
+                            
+                            unpaidServices.push({
+                                clientId: client.id,
+                                clientName: client.name,
+                                vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+                                cost: service.cost,
+                                daysAgo: daysAgo,
+                                service: service.services.join(', '),
+                                date: service.date
+                            });
+                        }
+                    });
+                });
+            });
+            
+            if (unpaidServices.length === 0) {
+                alert('No unpaid services! 🎉');
+                return;
+            }
+            
+            // Sort by days ago (oldest first)
+            unpaidServices.sort((a, b) => b.daysAgo - a.daysAgo);
+            
+            const message = unpaidServices.map(u => 
+                `${u.clientName}\n${u.vehicle}\n${u.service} - $${u.cost.toFixed(2)}\n${u.daysAgo} days ago\n`
+            ).join('\n');
+            
+            alert(`UNPAID SERVICES:\n\n${message}`);
         }
 
         init();
