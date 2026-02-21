@@ -1399,6 +1399,7 @@
                                 currentMonthTotal += service.cost;
                             }
                         }
+
                     });
                 });
             });
@@ -1685,6 +1686,7 @@
             
             let currentMonthTotal = 0;
             let ytdTotal = 0;
+            
             clients.forEach(client => {
                 
                 client.vehicles.forEach(vehicle => {
@@ -1702,6 +1704,7 @@
                                 currentMonthTotal += service.cost;
                             }
                         }
+
                         
 
                     });
@@ -2762,7 +2765,6 @@
                                 ${service.notes ? `<div class="service-notes">${service.notes}</div>` : ''}
                                 <div style="display: flex; gap: 8px; margin-top: 8px;">
                                     <button class="steps-btn" style="flex: 1;" onclick="showEditService('${vehicle.id}', ${index})">Edit</button>
-                                    <button onclick="togglePaid('${vehicle.id}', ${index})" style="flex: 1; background: ${service.paid ? '#10B981' : '#F59E0B'}; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer;">${service.paid ? '✓ Paid' : '💵 Unpaid'}</button>
                                     <button class="delete-btn" style="flex: 1;" onclick="deleteService('${vehicle.id}', ${index})">Delete</button>
                                 </div>
                             </div>
