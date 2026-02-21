@@ -730,6 +730,13 @@
                 <textarea id="editServiceNotes" rows="3" placeholder="Optional notes..."></textarea>
             </div>
             
+            <div style="margin: 16px 0;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #2A466F; font-size: 16px; font-weight: 600;">
+                    <input type="checkbox" id="editServicePaid" style="width: 20px; height: 20px; cursor: pointer;">
+                    <span>Paid?</span>
+                </label>
+            </div>
+            
             <button class="submit-btn" onclick="saveServiceEdit()">Save Changes</button>
             <button class="back-btn" onclick="cancelEditService()">Cancel</button>
         </div>
@@ -1944,6 +1951,7 @@
             document.getElementById('serviceCost').value = '';
             document.getElementById('serviceDuration').value = '';
             document.getElementById('serviceNotes').value = '';
+            document.getElementById('servicePaid').checked = false;
             customSteps = [];
             document.getElementById('serviceStepsSection').classList.add('hidden');
             setDefaultDate();
@@ -2748,6 +2756,7 @@
                                 ${service.notes ? `<div class="service-notes">${service.notes}</div>` : ''}
                                 <div style="display: flex; gap: 8px; margin-top: 8px;">
                                     <button class="steps-btn" style="flex: 1;" onclick="showEditService('${vehicle.id}', ${index})">Edit</button>
+                                    ${!service.paid ? `<button onclick="markServicePaid('${vehicle.id}', ${index})" style="flex: 1; background: #10B981; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer;">Mark Paid</button>` : `<div style="flex: 1; background: #D1FAE5; color: #065F46; padding: 8px 12px; border-radius: 6px; font-weight: 600; text-align: center; border: 2px solid #10B981;">✓ Paid</div>`}
                                     <button class="delete-btn" style="flex: 1;" onclick="deleteService('${vehicle.id}', ${index})">Delete</button>
                                 </div>
                             </div>
@@ -2885,6 +2894,7 @@
             document.getElementById('editServiceDuration').value = service.duration || '';
             document.getElementById('editServiceCost').value = service.cost;
             document.getElementById('editServiceNotes').value = service.notes || '';
+            document.getElementById('editServicePaid').checked = service.paid || false;
             
             // Store the performed steps for later
             window.currentEditPerformedSteps = service.performedSteps || null;
@@ -2924,6 +2934,7 @@
             const duration = document.getElementById('editServiceDuration').value;
             const cost = document.getElementById('editServiceCost').value;
             const notes = document.getElementById('editServiceNotes').value;
+            const paid = document.getElementById('editServicePaid').checked;
 
             if (services.length === 0) {
                 alert('Please select at least one service');
@@ -4470,6 +4481,7 @@
             document.getElementById('editServiceDuration').value = service.duration || '';
             document.getElementById('editServiceCost').value = service.cost;
             document.getElementById('editServiceNotes').value = service.notes || '';
+            document.getElementById('editServicePaid').checked = service.paid || false;
             
             // Show steps UI
             updateEditServiceStepsDisplay();
@@ -4524,6 +4536,97 @@
             }
             
             return false; // Prevent event bubbling
+        }
+
+
+        // Check for unpaid services and display alert
+        function checkUnpaidServices() {
+            const unpaidAlert = document.getElementById('unpaidServicesAlert');
+            if (!unpaidAlert) return;
+            
+            const unpaidServices = [];
+            const now = new Date();
+            
+            clients.forEach(client => {
+                if (client.isFamily) return; // Skip family
+                
+                client.vehicles.forEach(vehicle => {
+                    vehicle.services.forEach(service => {
+                        if (!service.paid) { // Unpaid services
+                            const serviceDate = new Date(service.date);
+                            const daysAgo = Math.floor((now - serviceDate) / (1000 * 60 * 60 * 24));
+                            
+                            unpaidServices.push({
+                                clientId: client.id,
+                                clientName: client.name,
+                                cost: service.cost,
+                                daysAgo: daysAgo,
+                                service: service.services.join(', '),
+                                date: service.date
+                            });
+                        }
+                    });
+                });
+            });
+            
+            if (unpaidServices.length === 0) {
+                unpaidAlert.innerHTML = '';
+                return;
+            }
+            
+            // Sort by days ago (oldest first)
+            unpaidServices.sort((a, b) => b.daysAgo - a.daysAgo);
+            
+            const totalUnpaid = unpaidServices.reduce((sum, s) => sum + s.cost, 0);
+            
+            const html = `
+                <div style="background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%); padding: 16px; border-radius: 12px; border: 2px solid #991B1B;">
+                    <div style="color: white; font-weight: 700; font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        ⚠️ UNPAID SERVICES
+                        <span style="margin-left: auto; font-size: 16px;">$${totalUnpaid.toFixed(2)}</span>
+                    </div>
+                    ${unpaidServices.slice(0, 5).map(u => `
+                        <div onclick="viewClientProfile('${u.clientId}')" style="background: rgba(255, 255, 255, 0.95); padding: 10px; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 2px solid #FCA5A5;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 700; color: #991B1B; font-size: 15px;">${u.clientName}</div>
+                                    <div style="color: #64748b; font-size: 13px;">${u.service} • ${formatDate(u.date)}</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="color: #DC2626; font-weight: 700; font-size: 16px;">$${u.cost.toFixed(2)}</div>
+                                    <div style="color: #78716C; font-size: 12px;">${u.daysAgo}d ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                    ${unpaidServices.length > 5 ? `<div style="color: rgba(255,255,255,0.9); text-align: center; font-size: 13px; margin-top: 8px;">+${unpaidServices.length - 5} more unpaid</div>` : ''}
+                </div>
+            `;
+            
+            unpaidAlert.innerHTML = html;
+        }
+
+
+        // Mark service as paid
+        function markServicePaid(vehicleId, serviceIndex) {
+            const client = clients.find(c => c.id === currentClientId);
+            const vehicle = client.vehicles.find(v => v.id === vehicleId);
+            
+            // Get the sorted services
+            const sortedServices = [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date));
+            const service = sortedServices[serviceIndex];
+            
+            // Find actual index in unsorted array
+            const actualIndex = vehicle.services.findIndex(s => 
+                s.date === service.date && s.cost === service.cost && s.services.join(',') === service.services.join(',')
+            );
+            
+            if (actualIndex !== -1) {
+                vehicle.services[actualIndex].paid = true;
+                saveData();
+                checkUnpaidServices(); // Refresh main menu alert
+                viewClientProfile(currentClientId); // Refresh profile
+            }
         }
 
         init();
