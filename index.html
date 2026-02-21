@@ -4310,7 +4310,8 @@
 
         function cancelRepeatService() {
             pendingRepeatService = null;
-            showScreen('quickLog');
+            // Go to the service form instead of back to vehicle selection
+            showScreen('logServiceForm');
         }
 
 
