@@ -2762,6 +2762,7 @@
                                 ${service.notes ? `<div class="service-notes">${service.notes}</div>` : ''}
                                 <div style="display: flex; gap: 8px; margin-top: 8px;">
                                     <button class="steps-btn" style="flex: 1;" onclick="showEditService('${vehicle.id}', ${index})">Edit</button>
+                                    <button onclick="togglePaid('${vehicle.id}', ${index})" style="flex: 1; background: ${service.paid ? '#10B981' : '#F59E0B'}; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer;">${service.paid ? '✓ Paid' : '💵 Unpaid'}</button>
                                     <button class="delete-btn" style="flex: 1;" onclick="deleteService('${vehicle.id}', ${index})">Delete</button>
                                 </div>
                             </div>
@@ -4679,6 +4680,29 @@
             ).join('\n');
             
             alert(`UNPAID SERVICES:\n\n${message}`);
+        }
+
+
+        // Toggle paid status
+        function togglePaid(vehicleId, serviceIndex) {
+            const client = clients.find(c => c.id === currentClientId);
+            const vehicle = client.vehicles.find(v => v.id === vehicleId);
+            
+            // Get sorted services
+            const sortedServices = [...vehicle.services].sort((a,b) => new Date(b.date) - new Date(a.date));
+            const service = sortedServices[serviceIndex];
+            
+            // Find actual index in unsorted array
+            const actualIndex = vehicle.services.findIndex(s => 
+                s.date === service.date && s.cost === service.cost && s.services.join(',') === service.services.join(',')
+            );
+            
+            if (actualIndex !== -1) {
+                // Toggle paid status
+                vehicle.services[actualIndex].paid = !vehicle.services[actualIndex].paid;
+                saveData();
+                viewClientProfile(currentClientId); // Refresh to show new status
+            }
         }
 
         init();
