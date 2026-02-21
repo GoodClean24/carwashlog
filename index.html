@@ -2115,6 +2115,18 @@
             }
             
             showScreen('mainMenu');
+            
+            // TEST: Force display unpaid alert to verify container exists
+            setTimeout(() => {
+                const testAlert = document.getElementById('unpaidServicesAlert');
+                if (testAlert) {
+                    console.log('✓ unpaidServicesAlert container FOUND');
+                    testAlert.innerHTML = '<div style="background: red; color: white; padding: 20px; border-radius: 10px; font-weight: bold;">TEST: Unpaid Alert Container Working!</div>';
+                } else {
+                    console.log('✗ unpaidServicesAlert container NOT FOUND');
+                    alert('ERROR: unpaidServicesAlert container missing from page!');
+                }
+            }, 500);
         }
 
         function formatDate(dateString) {
